@@ -1,0 +1,14 @@
+{
+  "mode": "testops",
+  
+  "testops": {
+    
+    "project": "TGCGM",
+    "api": {
+      "token": "4ee73c4030f52f08da44494bce0691696778fab0e31799cbc1ff805b7ad53975"
+    }
+
+  }
+
+  
+}
