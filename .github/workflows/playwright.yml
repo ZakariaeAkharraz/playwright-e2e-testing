@@ -1,8 +1,8 @@
 name: Playwright Tests
 env:
-  DEV_URL_GAMITOOL: ${{secrets.DEV_URL_GAMITOOL}}
-  BACKEND_URL_DEV: ${{secrets.BACKEND_URL_DEV}}
-  
+  DEV_URL_GAMITOOL: ${{vars.DEV_URL_GAMITOOL}}
+  BACKEND_URL_DEV: ${{vars.BACKEND_URL_DEV}}
+
 on:
   push:
     branches: [ main, master ]
@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: npm ci
     - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+      run: npx playwright install chromium
     - name: Run Playwright tests
       run: npx playwright test
     - uses: actions/upload-artifact@v4
