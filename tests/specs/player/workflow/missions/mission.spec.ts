@@ -2,12 +2,12 @@ import test, { expect } from "@playwright/test";
 import { resetWorkflow } from "../workflow.fixture";
 import { QA_USER } from "../../fixtures/test-users";
 
-import dotenv from 'dotenv';
+
 import { Program } from "../../../../pages/program.page";
 import { Mission } from "../../../../pages/mission.page";
 import { test as fileTest } from "../../fixtures/file-fixture"
 import { qase } from "playwright-qase-reporter"
-dotenv.config();
+
 
 
 
