@@ -13,7 +13,7 @@ import dotenv from 'dotenv';
  */
 dotenv.config();
 export default defineConfig({
-  timeout:500_000,
+  timeout:300_000,
   testDir: './tests',
   
   /* Run tests in files in parallel */
