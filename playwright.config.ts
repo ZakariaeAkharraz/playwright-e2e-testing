@@ -13,9 +13,9 @@ require('dotenv').config({ silent: true });
  */
 
 export default defineConfig({
-  timeout:300_000,
+  timeout: 30_000,
   testDir: './tests',
-  
+
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -23,15 +23,16 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? undefined : undefined,
+  workers: process.env.CI ? 2 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: process.env.CI ? 'list' : 'html',
+  reporter: process.env.CI ? 'blob' : [['list'], ['html']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
     // video: 'retain-on-failure',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    headless: process.env.CI ? true : false,
     trace: 'off',
     bypassCSP: true,
   },
@@ -69,7 +70,7 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome'],
         baseURL: process.env.DEV_URL_GAMITOOL,
-        trace:'off'
+        trace: 'off'
       },
 
     },
