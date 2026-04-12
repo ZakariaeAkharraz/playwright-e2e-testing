@@ -1,7 +1,5 @@
 name: Playwright Tests
-env:
-  DEV_URL_GAMITOOL: ${{vars.DEV_URL_GAMITOOL}}
-  BACKEND_URL_DEV: ${{vars.BACKEND_URL_DEV}}
+
 
 on:
   push:
@@ -22,6 +20,10 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install chromium
     - name: Run Playwright tests
+      env:
+        DEV_URL_GAMITOOL: ${{vars.DEV_URL_GAMITOOL}}
+        BACKEND_URL_DEV: ${{vars.BACKEND_URL_DEV}}
+        
       run: npx playwright test
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
