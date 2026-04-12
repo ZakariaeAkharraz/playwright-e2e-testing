@@ -1,4 +1,8 @@
 name: Playwright Tests
+env:
+  DEV_URL_GAMITOOL: ${{secrets.DEV_URL_GAMITOOL}}
+  BACKEND_URL_DEV: ${{secrets.BACKEND_URL_DEV}}
+  
 on:
   push:
     branches: [ main, master ]
