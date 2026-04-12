@@ -66,7 +66,7 @@ test.describe("testing a user workflow from login to mission", () => {
     // }
 
     test("multiple users inside one test", async ({ browser }) => {
-        test.slow();
+        // test.slow();
         test.skip();
         const TEST_USERS = generateTestUsers(NBR_USERS)
 
