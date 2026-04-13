@@ -86,16 +86,18 @@ test.describe("Mission workflow", {
             const mission = new Mission(page);
             await mission.goto(1);
             await mission.startMission();
+            await page.waitForTimeout(3000)
         })
 
-        fileTest(qase(1,"should be able to upload file, add file description and complete the mission"), {}, async ({ page, generateFile }) => {
+        fileTest("should be able to upload file, add file description and complete the mission", {}, async ({ page, generateFile }) => {
 
             const mission = new Mission(page);
+
             // better to use mission category or something instead of nth mission
 
             // const missionId = await mission.goto(1);
             // await mission.startMission();
-            const filePath = generateFile("test-file.docx", 10);
+            const filePath =  generateFile("test-file.docx", 10);
 
             // upload file
 

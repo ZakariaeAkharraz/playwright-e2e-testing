@@ -10,6 +10,8 @@ export const TEST_USER = {
 }
 export const QA_USER = {
         id: "f5fbb237-8396-4617-8f8c-62b5c85847c6",
+        firstname:"qa",
+        lastName:"test1",
         email: "qa.test@tenant.com",
         password: "motDEpasse@12345",
         role: "Player",

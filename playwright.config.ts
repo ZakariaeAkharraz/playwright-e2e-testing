@@ -25,14 +25,15 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 2 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: process.env.CI ? 'blob' : [['list'], ['html']],
+  // reporter: process.env.CI ? 'blob' : 'html',
+  reporter:'list',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
     // video: 'retain-on-failure',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    headless: process.env.CI ? true : false,
+    // headless: process.env.CI ? true : false,
     trace: 'off',
     bypassCSP: true,
   },
@@ -70,7 +71,7 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome'],
         baseURL: process.env.DEV_URL_GAMITOOL,
-        trace: 'off'
+        trace: 'on'
       },
 
     },

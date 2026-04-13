@@ -23,19 +23,22 @@ export class Mission {
     async startMission() {
         await this.page.getByRole('button', { name: 'Démarrer la mission' }).click();
         await this.page.getByRole('button', { name: 'Confirmer' }).click();
+        console.log("waiting for state to be hidden")
+        await expect (this.page.getByRole('dialog').first()).not.toBeVisible();
+        console.log("HIDDEN")
 
     }
 
     async closeMission() {
         await this.page.getByRole('button', { name: 'Terminer la mission' }).click();
         await this.page.getByRole('button', { name: 'Confirmer' }).click();
-
+        await this.page.waitForTimeout(3000)
         // await this.page.waitForURL(/.*projects/)
 
     }
 
     async assertMissionComplete(missionId: string) {
-        const missionCompleted = await this.page.locator(`div[data-mission-id="${missionId}"]`);
+        const missionCompleted = await this.page.locator(`[data-mission-id="${missionId}"]`);
         // await expect(missionCompleted).toHaveAttribute("data-status","completed");
 
         await expect(missionCompleted).toHaveText(/[1-9]* coins/i);
@@ -46,7 +49,7 @@ export class Mission {
 
         const fileChooserPromise = this.page.waitForEvent("filechooser");
 
-        await this.page.locator("div[data-slot='file-upload-dropzone']").click();
+        await this.page.locator("[data-slot='file-upload-dropzone']").click();
         await fileChooserPromise.then(fileChooser => fileChooser.setFiles(filePath));
 
     }
