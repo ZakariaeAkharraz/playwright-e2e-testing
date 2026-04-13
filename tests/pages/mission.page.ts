@@ -65,7 +65,7 @@ export class Mission {
     async uploadUnsupportedFile(filePath: string, page: Page) {
 
         const fileChooserPromise = page.waitForEvent("filechooser");
-        await page.locator("div[data-slot='file-upload-dropzone']").click();
+        await page.locator("[data-slot='file-upload-dropzone']").click();
         await fileChooserPromise.then(fileChooser => fileChooser.setFiles(filePath));
 
     }
