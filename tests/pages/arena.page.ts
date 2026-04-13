@@ -15,7 +15,7 @@ export class Arena {
         // dashboard.goto();
         await this.page.getByTestId(/^sidebar-nav-arenas/).click();
 
-        // await this.page.waitForURL(/.*arenas.*/);
+        await this.page.waitForURL(/.*arenas.*/);
 
     }
 

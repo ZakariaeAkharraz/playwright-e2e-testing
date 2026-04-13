@@ -71,7 +71,7 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome'],
         baseURL: process.env.DEV_URL_GAMITOOL,
-        trace: 'on'
+        trace: 'off'
       },
 
     },

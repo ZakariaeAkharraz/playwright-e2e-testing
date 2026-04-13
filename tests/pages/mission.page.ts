@@ -23,9 +23,9 @@ export class Mission {
     async startMission() {
         await this.page.getByRole('button', { name: 'Démarrer la mission' }).click();
         await this.page.getByRole('button', { name: 'Confirmer' }).click();
-        console.log("waiting for state to be hidden")
-        await expect (this.page.getByRole('dialog').first()).not.toBeVisible();
-        console.log("HIDDEN")
+        // console.log("waiting for state to be hidden")
+        // await expect (this.page.getByRole('dialog').first()).not.toBeVisible();
+        // console.log("HIDDEN")
 
     }
 

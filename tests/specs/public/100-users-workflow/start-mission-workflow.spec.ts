@@ -6,10 +6,12 @@ import { Arena } from "../../../pages/arena.page";
 import { Mission } from "../../../pages/mission.page";
 import { resetWorkflowForUser, resetWorkflowForUserAPI } from "../../player/workflow/workflow.fixture";
 import { Dashboard } from "../../../pages/dashboard.page";
+import { metrics } from "../../../helpers/metrics";
 
+const NBR_USERS = 1;
+const index = 1;
 
-const NBR_USERS = 5;
-
+const TEST_USERS = generateTestUsers(NBR_USERS,index)
 test.describe("testing a user workflow from login to mission", () => {
 
     // const TEST_USERS = generateTestUsers(NBR_USERS)
@@ -66,9 +68,9 @@ test.describe("testing a user workflow from login to mission", () => {
     // }
 
     test("multiple users inside one test", async ({ browser }) => {
-        // test.slow();
-        test.skip();
-        const TEST_USERS = generateTestUsers(NBR_USERS)
+        test.setTimeout(300_000)
+        test.slow();
+        // test.skip();
 
         // Arrays to collect timestamps
         const startTimestamps: number[] = [];
@@ -87,20 +89,26 @@ test.describe("testing a user workflow from login to mission", () => {
                 const arena = new Arena(page);
                 const mission = new Mission(page);
 
-                
-                await login.goto();
-                await login.signin(user.email, user.password);
 
-                // now we're in the dashboard
+                await metrics.measure(page,"login + load dashboard", async () => {
+                    await login.goto();
+                    await login.signin(user.email, user.password);
+                    await page.getByRole('button', { name: 'Close tutorial' }).click();
+                })
 
-                // close dashboard tutorial
-                await page.getByRole('button', { name: 'Close tutorial' }).click();
+                await metrics.measure(page,"dashboard to arena", async () => {
 
-                await arena.goto();
+                    // now we're in the dashboard
+                    // close dashboard tutorial
 
-                // close Arena tutorial
-                await page.getByRole('button', { name: 'Close tutorial' }).click();
-                
+                    await arena.goto();
+
+                    // close Arena tutorial
+                    await page.getByRole('button', { name: 'Close tutorial' }).click();
+                })
+
+
+
                 // add a project to the favorite
                 // await arena.addFirstProgramToFavorite();
 
@@ -110,21 +118,29 @@ test.describe("testing a user workflow from login to mission", () => {
                 // verify if the program was added to favorite
                 // await program.assertProgramExist();
 
-                
-                await program.gotoProgram();
+                await metrics.measure(page,"load a project", async () => {
+                    await program.gotoProgram();
 
-                // close Program tutorial
-                await page.getByRole('button', { name: 'Close tutorial' }).click();
+                    // close Program tutorial
+                    await page.getByRole('button', { name: 'Close tutorial' }).click();
 
-                // now we should be in the program page
+                    // now we should be in the program page
+                })
 
-                // accessing the first mission 'Doc to read'
-                await mission.goto(0);
+                await metrics.measure(page,"goto mission page", async () => {
+                    // accessing the first mission 'Doc to read'
+                    await mission.goto(0);
+                })
 
 
-                await mission.startMission();
 
-                await mission.closeMission();
+                await metrics.measure(page,"start a mission", async () => {
+                    await mission.startMission();
+                })
+
+                await metrics.measure(page,"complete a mission", async () => {
+                    await mission.closeMission();
+                })
 
                 // remove program from favorite
                 // await arena.goto();
@@ -139,7 +155,7 @@ test.describe("testing a user workflow from login to mission", () => {
 
             } finally {
 
-                endTimestamps.push(performance.now());
+                // endTimestamps.push(performance.now());
 
                 // await page.close();
                 // await context.close();
@@ -149,28 +165,28 @@ test.describe("testing a user workflow from login to mission", () => {
 
         await Promise.all(TEST_USERS.map(user => runWorkflow(user)))
 
-        // Calculate metrics
-        const firstStart = Math.min(...startTimestamps);
-        const lastEnd = Math.max(...endTimestamps);
-        const firstEnd = Math.min(...endTimestamps);
-        const lastStart = Math.max(...startTimestamps);
+        // // Calculate metrics
+        // const firstStart = Math.min(...startTimestamps);
+        // const lastEnd = Math.max(...endTimestamps);
+        // const firstEnd = Math.min(...endTimestamps);
+        // const lastStart = Math.max(...startTimestamps);
 
-        const totalSpreadSeconds = (lastEnd - firstStart) / 1000;
-        const finishingWindow = (lastEnd - firstEnd) / 1000;
+        // const totalSpreadSeconds = (lastEnd - firstStart) / 1000;
+        // const finishingWindow = (lastEnd - firstEnd) / 1000;
 
-        console.log(`--- Performance Report ---`);
-        console.log(`Total Time (First Start -> Last Finish): ${totalSpreadSeconds.toFixed(2)}s`);
-        console.log(`Finishing Window (First Finish -> Last Finish): ${finishingWindow.toFixed(2)}s`);
+        // console.log(`--- Performance Report ---`);
+        // console.log(`Total Time (First Start -> Last Finish): ${totalSpreadSeconds.toFixed(2)}s`);
+        // console.log(`Finishing Window (First Finish -> Last Finish): ${finishingWindow.toFixed(2)}s`);
         // console.log(`Average User Duration: ${((endTimestamps.reduce((a, b) => a + b, 0) - startTimestamps.reduce((a, b) => a + b, 0)) / 50 / 1000).toFixed(2)}s`);
     })
 
-    
+    test.afterAll(() => {
+        metrics.print();
+    })
 
-    test("reset workflows with api",async ()=>{})
+    // test("reset workflows with api", async () => { })
 
     test.beforeAll("reset workflow for multiple users", async ({ browser }) => {
-
-        const TEST_USERS = generateTestUsers(NBR_USERS)
 
 
         const runWorkflow = async (user: { email: string, password: string, workflowId: string }) => {

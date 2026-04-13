@@ -25,14 +25,17 @@ export const QA_USER = {
 
 
 
-export function generateTestUsers(numberOfUsers:number){ 
-        const users=[]
-        for (let i = 1; i <= numberOfUsers ; i++) {      
+export function generateTestUsers(numberOfUsers: number, index: number) {
+        const users = []
+        const first = (index - 1) * numberOfUsers + 1;
+        const last = index * numberOfUsers;
+        for (let i = first; i <= last; i++) {
                 // if(i==7)continue;
-         users.push({
-                email:`testing${i}@test.com`,
-                password:"Pass12345@",
-                workflowId:"69cbe2612d6d77a96a84accc"})
+                users.push({
+                        email: `testing${i}@test.com`,
+                        password: "Pass12345@",
+                        workflowId: "69cbe2612d6d77a96a84accc"
+                })
         }
         return users;
 }
