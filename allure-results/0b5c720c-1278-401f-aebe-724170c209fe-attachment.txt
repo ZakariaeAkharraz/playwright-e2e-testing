@@ -1,0 +1,80 @@
+testing3@test.com in the dashboard
+testing6@test.com in the dashboard
+testing8@test.com in the dashboard
+testing2@test.com in the dashboard
+testing10@test.com in the dashboard
+testing9@test.com in the dashboard
+testing1@test.com in the dashboard
+testing7@test.com in the dashboard
+testing5@test.com in the dashboard
+testing4@test.com in the dashboard
+testing6@test.com in the arena page
+testing8@test.com in the arena page
+testing5@test.com in the arena page
+testing10@test.com in the arena page
+testing1@test.com in the arena page
+testing3@test.com in the arena page
+testing9@test.com in the arena page
+testing7@test.com in the arena page
+testing2@test.com in the arena page
+testing4@test.com in the arena page
+testing6@test.com in the program page
+testing8@test.com in the program page
+testing5@test.com in the program page
+testing10@test.com in the program page
+testing3@test.com in the program page
+testing1@test.com in the program page
+testing9@test.com in the program page
+testing7@test.com in the program page
+testing2@test.com in the program page
+testing4@test.com in the program page
+testing6@test.com finished mission
+testing5@test.com finished mission
+testing8@test.com finished mission
+testing7@test.com finished mission
+testing3@test.com finished mission
+testing2@test.com finished mission
+testing1@test.com finished mission
+testing4@test.com finished mission
+testing10@test.com finished mission
+testing9@test.com finished mission
+
+📊 Step Metrics:
+{
+  "user login to dashboard": {
+    "count": 10,
+    "min": "10359ms ",
+    "avg": "11662ms ",
+    "max": "13263ms ",
+    "p50": "11375ms ",
+    "p90": "12965ms ",
+    "p95": "13263ms "
+  },
+  "dashboard to arena": {
+    "count": 10,
+    "min": "3319ms  ",
+    "avg": "5088ms  ",
+    "max": "6316ms  ",
+    "p50": "4973ms  ",
+    "p90": "6047ms  ",
+    "p95": "6316ms  "
+  },
+  "user navigate to program": {
+    "count": 10,
+    "min": "3600ms  ",
+    "avg": "5312ms  ",
+    "max": "6716ms  ",
+    "p50": "5235ms  ",
+    "p90": "6610ms  ",
+    "p95": "6716ms  "
+  },
+  "mission upload doc": {
+    "count": 10,
+    "min": "13428ms ",
+    "avg": "16233ms ",
+    "max": "18819ms ",
+    "p50": "16012ms ",
+    "p90": "17371ms ",
+    "p95": "18819ms "
+  }
+}

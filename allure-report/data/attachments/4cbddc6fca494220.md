@@ -1,0 +1,839 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: specs\public\loadtest\user-workflow-upload-file-mission.spec.ts >> multiple users inside one test
+- Location: tests\specs\public\loadtest\user-workflow-upload-file-mission.spec.ts:16:9
+
+# Error details
+
+```
+Fixture "trace recording" timeout of 30000ms exceeded during teardown.
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - button "GamiTool" [ref=e5] [cursor=pointer]:
+          - img "GamiTool" [ref=e6]
+        - button [ref=e7] [cursor=pointer]:
+          - img [ref=e8]
+      - generic [ref=e10]:
+        - navigation [ref=e11]:
+          - list [ref=e12]:
+            - listitem [ref=e13]:
+              - link "Favoris" [ref=e14] [cursor=pointer]:
+                - /url: /fr/projects/favorite
+                - img [ref=e15]
+                - text: Favoris
+        - navigation [ref=e17]:
+          - list [ref=e18]:
+            - listitem [ref=e19]:
+              - link "Tableau de bord" [ref=e20] [cursor=pointer]:
+                - /url: /fr/dashboard
+                - img [ref=e21]
+                - text: Tableau de bord
+            - listitem [ref=e26]:
+              - generic [ref=e28]:
+                - button "Mon Arène" [ref=e29] [cursor=pointer]:
+                  - text: Mon Arène
+                  - img [ref=e30]
+                - region [ref=e32]:
+                  - generic [ref=e34]:
+                    - link "QA Testing Arenaaaa" [ref=e35] [cursor=pointer]:
+                      - /url: /fr/arenas/819c2f67-12a9-47d7-9ef5-ab0be4ff4c1a?arenaName=QA Testing Arenaaaa
+                    - link "Demo Arena" [ref=e36] [cursor=pointer]:
+                      - /url: /fr/arenas/19cb7e11-45a1-4a22-ad1e-ed46bc4453a7?arenaName=Demo Arena
+      - generic [ref=e37]:
+        - navigation [ref=e38]:
+          - list [ref=e39]:
+            - listitem [ref=e40]:
+              - link "Paramètres" [ref=e41] [cursor=pointer]:
+                - /url: /fr/settings
+                - img [ref=e42]
+                - text: Paramètres
+        - button "Déconnexion" [ref=e45] [cursor=pointer]:
+          - img [ref=e46]
+          - text: Déconnexion
+        - generic [ref=e50]:
+          - img "Attijari bank" [ref=e52]
+          - generic [ref=e53]:
+            - paragraph [ref=e54]: Attijari bank
+            - paragraph [ref=e55]: Organization
+    - generic [ref=e56]:
+      - banner [ref=e57]:
+        - heading "QA project" [level=1] [ref=e58]
+        - generic [ref=e59]:
+          - button "Leaderboard icon Classement" [ref=e61] [cursor=pointer]:
+            - img "Leaderboard icon" [ref=e62]
+            - generic [ref=e63]: Classement
+          - button "Start tutorial" [ref=e64] [cursor=pointer]: Tutorial
+          - button "Show achievements" [ref=e66] [cursor=pointer]:
+            - img "Achievements" [ref=e67]
+          - button "Afficher le tiroir d'aide" [ref=e70] [cursor=pointer]:
+            - img "Aide" [ref=e71]
+          - button "Afficher le tiroir de tâches" [ref=e73] [cursor=pointer]:
+            - img "Tâches" [ref=e74]
+          - button "Notifications 5" [ref=e76] [cursor=pointer]:
+            - img "Notifications" [ref=e77]
+            - generic [ref=e78]: "5"
+          - button "Change language" [ref=e80] [cursor=pointer]:
+            - img [ref=e81]
+          - generic [ref=e85] [cursor=pointer]: T1
+      - main [ref=e86]:
+        - generic [ref=e88]:
+          - generic [ref=e89]:
+            - generic [ref=e90]:
+              - generic [ref=e91]:
+                - heading "Bon retour testing 👋" [level=1] [ref=e93]
+                - generic [ref=e94]:
+                  - button "Réinitialiser tout" [ref=e95] [cursor=pointer]:
+                    - img [ref=e96]
+                    - text: Réinitialiser tout
+                  - generic [ref=e101]:
+                    - img "Coin" [ref=e102]
+                    - text: 10 Coins
+              - img [ref=e104]:
+                - generic [ref=e111] [cursor=pointer]: WELCOME
+                - generic [ref=e112] [cursor=pointer]: EXPLORE
+                - generic [ref=e113] [cursor=pointer]: PERFORM
+            - generic [ref=e114]:
+              - heading "Votre carte de parcours" [level=2] [ref=e115]
+              - generic [ref=e126]:
+                - generic [ref=e127]:
+                  - img [ref=e129]
+                  - heading "Upload doc" [level=3] [ref=e132]:
+                    - paragraph [ref=e133]: Upload doc
+                  - paragraph [ref=e135]: Terminé
+                - generic [ref=e136]:
+                  - img [ref=e138]
+                  - heading "Doc to read" [level=3] [ref=e141]:
+                    - paragraph [ref=e142]: Doc to read
+                  - generic:
+                    - paragraph
+                - generic [ref=e143]:
+                  - img [ref=e145]
+                  - heading "Tasks welcome" [level=3] [ref=e148]:
+                    - paragraph [ref=e149]: Tasks welcome
+                  - generic:
+                    - paragraph
+                - generic [ref=e150]:
+                  - img [ref=e152]
+                  - heading "media welcome" [level=3] [ref=e155]:
+                    - paragraph [ref=e156]: media welcome
+                  - generic:
+                    - paragraph
+                - generic [ref=e157]:
+                  - img [ref=e159]
+                  - heading "upload dep" [level=3] [ref=e162]:
+                    - paragraph [ref=e163]: upload dep
+                  - generic:
+                    - paragraph
+            - generic [ref=e164]:
+              - generic [ref=e165]:
+                - heading "Mission active" [level=1] [ref=e166]
+                - button "Réinitialiser la phase" [ref=e167] [cursor=pointer]:
+                  - img [ref=e168]
+                  - text: Réinitialiser la phase
+              - generic [ref=e171]:
+                - generic [ref=e174] [cursor=pointer]:
+                  - generic [ref=e176]:
+                    - generic [ref=e177]:
+                      - heading "Doc to read" [level=3] [ref=e178]
+                      - generic [ref=e181]: Apprentissage
+                    - paragraph [ref=e182]: QA project
+                    - paragraph [ref=e183]: Doc to read description
+                  - generic [ref=e184]:
+                    - generic [ref=e186]:
+                      - paragraph [ref=e187]: Cette mission n'a pas encore commencé
+                      - paragraph [ref=e188]: 0m / 1j
+                    - generic [ref=e190]:
+                      - button "Réinitialiser" [ref=e191]:
+                        - img [ref=e192]
+                        - text: Réinitialiser
+                      - button "Commencer" [ref=e195]:
+                        - text: Commencer
+                        - img [ref=e196]
+                - generic [ref=e200] [cursor=pointer]:
+                  - generic [ref=e201]:
+                    - generic [ref=e202]:
+                      - generic [ref=e203]:
+                        - heading "Upload doc" [level=3] [ref=e204]
+                        - generic [ref=e207]: Feedback
+                      - paragraph [ref=e208]: QA project
+                      - paragraph [ref=e209]: Description, hello !!!!
+                      - paragraph [ref=e210]: Date d'expiration 15/04/2026
+                    - generic [ref=e214]:
+                      - img "Coin" [ref=e215]
+                      - text: 10 Coins
+                  - generic [ref=e216]:
+                    - generic [ref=e218]:
+                      - paragraph [ref=e219]: Mission terminée
+                      - paragraph [ref=e220]: 1j / 1j
+                    - generic [ref=e223]:
+                      - button "Réinitialiser" [ref=e224]:
+                        - img [ref=e225]
+                        - text: Réinitialiser
+                      - button "Terminé" [ref=e228]
+                - generic [ref=e231] [cursor=pointer]:
+                  - generic [ref=e233]:
+                    - generic [ref=e234]:
+                      - heading "Tasks welcome" [level=3] [ref=e235]
+                      - generic [ref=e238]: Jeu
+                    - paragraph [ref=e239]: QA project
+                    - paragraph [ref=e240]: tasks desc
+                  - generic [ref=e241]:
+                    - generic [ref=e243]:
+                      - paragraph [ref=e244]: Cette mission n'a pas encore commencé
+                      - paragraph [ref=e245]: 0m / 1j
+                    - generic [ref=e247]:
+                      - button "Réinitialiser" [ref=e248]:
+                        - img [ref=e249]
+                        - text: Réinitialiser
+                      - button "Commencer" [ref=e252]:
+                        - text: Commencer
+                        - img [ref=e253]
+                - generic [ref=e257] [cursor=pointer]:
+                  - generic [ref=e259]:
+                    - generic [ref=e260]:
+                      - heading "media welcome" [level=3] [ref=e261]
+                      - generic [ref=e264]: Jeu
+                    - paragraph [ref=e265]: QA project
+                    - paragraph [ref=e266]: media welcome
+                  - generic [ref=e267]:
+                    - generic [ref=e269]:
+                      - paragraph [ref=e270]: Cette mission n'a pas encore commencé
+                      - paragraph [ref=e271]: 0m / 1j
+                    - generic [ref=e273]:
+                      - button "Réinitialiser" [ref=e274]:
+                        - img [ref=e275]
+                        - text: Réinitialiser
+                      - button "Commencer" [ref=e278]:
+                        - text: Commencer
+                        - img [ref=e279]
+                - generic [ref=e283] [cursor=pointer]:
+                  - generic [ref=e285]:
+                    - generic [ref=e286]:
+                      - heading "upload dep" [level=3] [ref=e287]
+                      - generic [ref=e290]: Jeu
+                    - paragraph [ref=e291]: QA project
+                    - paragraph
+                  - generic [ref=e292]:
+                    - generic [ref=e294]:
+                      - paragraph [ref=e295]: Cette mission n'a pas encore commencé
+                      - paragraph [ref=e296]: 0m / 1j
+                    - generic [ref=e298]:
+                      - button "Réinitialiser" [ref=e299]:
+                        - img [ref=e300]
+                        - text: Réinitialiser
+                      - button "Voir" [ref=e303]:
+                        - generic [ref=e304]: Voir
+          - generic [ref=e305]:
+            - generic [ref=e306]:
+              - img "mentor2 gamitoll" [ref=e312]
+              - generic [ref=e313]:
+                - heading "mentor2 gamitoll" [level=1] [ref=e314]
+                - paragraph [ref=e315]: Buddy
+            - generic [ref=e316]:
+              - generic [ref=e317]:
+                - img [ref=e318]
+                - heading "Planning hebdomadaire" [level=2] [ref=e320]
+              - generic [ref=e321]:
+                - img [ref=e323] [cursor=pointer]
+                - heading "avril 2026" [level=3] [ref=e326]
+                - img [ref=e328] [cursor=pointer]
+              - generic [ref=e330]:
+                - img [ref=e332] [cursor=pointer]
+                - generic [ref=e335]:
+                  - generic [ref=e336] [cursor=pointer]:
+                    - generic [ref=e337]: Lun
+                    - generic [ref=e338]: "13"
+                  - generic [ref=e339] [cursor=pointer]:
+                    - generic [ref=e340]: Mar
+                    - generic [ref=e341]: "14"
+                  - generic [ref=e342] [cursor=pointer]:
+                    - generic [ref=e343]: Mer
+                    - generic [ref=e344]: "15"
+                  - generic [ref=e345] [cursor=pointer]:
+                    - generic [ref=e346]: Jeu
+                    - generic [ref=e347]: "16"
+                  - generic [ref=e348] [cursor=pointer]:
+                    - generic [ref=e349]: Ven
+                    - generic [ref=e350]: "17"
+                  - generic [ref=e351] [cursor=pointer]:
+                    - generic [ref=e352]: Sam
+                    - generic [ref=e353]: "18"
+                  - generic [ref=e354] [cursor=pointer]:
+                    - generic [ref=e355]: Dim
+                    - generic [ref=e356]: "19"
+                - img [ref=e358] [cursor=pointer]
+              - generic [ref=e360]:
+                - img [ref=e361]
+                - heading "Aucun événement planifié" [level=3] [ref=e363]
+                - paragraph [ref=e364]: Il n'y a aucun événement planifié pour Aujourd'hui
+            - generic [ref=e365]:
+              - generic [ref=e367]:
+                - img [ref=e368]
+                - heading "Événements à venir" [level=2] [ref=e370]
+              - generic [ref=e372]:
+                - img [ref=e373]
+                - heading "Aucun événement à venir" [level=3] [ref=e375]
+                - paragraph [ref=e376]: Il n'y a aucun événement à venir programmé pour le moment.
+            - generic [ref=e377]:
+              - generic [ref=e378]:
+                - generic [ref=e379]:
+                  - img [ref=e380]
+                  - heading "Équipe" [level=2] [ref=e385]
+                - generic [ref=e386]: test team
+              - generic [ref=e387]:
+                - combobox [ref=e388]:
+                  - generic: Tous les départements
+                  - img
+                - generic [ref=e389]:
+                  - textbox "Rechercher un membre ..." [ref=e390]
+                  - img [ref=e391]
+              - generic [ref=e394]:
+                - generic [ref=e395]:
+                  - heading "Buddy" [level=3] [ref=e396]:
+                    - img [ref=e397]
+                    - text: Buddy
+                  - generic [ref=e400]:
+                    - generic [ref=e403]: MG
+                    - generic [ref=e405]:
+                      - generic [ref=e406]:
+                        - heading "Mentor2 Gamitoll" [level=3] [ref=e407]
+                        - img [ref=e408]
+                      - paragraph [ref=e410]: mentor2@mentor.com
+                - heading "Membres de l'équipe (103)" [level=3] [ref=e411]:
+                  - text: Membres de l'équipe
+                  - generic [ref=e412]: (103)
+                - generic [ref=e414]:
+                  - generic [ref=e417]: T1
+                  - generic [ref=e419]:
+                    - heading "Testing 18" [level=3] [ref=e421]
+                    - paragraph [ref=e422]: testing18@test.com
+                - generic [ref=e424]:
+                  - generic [ref=e427]: T3
+                  - generic [ref=e429]:
+                    - heading "Testing 3" [level=3] [ref=e431]
+                    - paragraph [ref=e432]: testing3@test.com
+                - generic [ref=e434]:
+                  - generic [ref=e437]: T1
+                  - generic [ref=e439]:
+                    - heading "Testing 19" [level=3] [ref=e441]
+                    - paragraph [ref=e442]: testing19@test.com
+                - generic [ref=e444]:
+                  - generic [ref=e447]: T6
+                  - generic [ref=e449]:
+                    - heading "Testing 62" [level=3] [ref=e451]
+                    - paragraph [ref=e452]: testing62@test.com
+                - generic [ref=e454]:
+                  - generic [ref=e457]: T7
+                  - generic [ref=e459]:
+                    - heading "Testing 72" [level=3] [ref=e461]
+                    - paragraph [ref=e462]: testing72@test.com
+                - generic [ref=e464]:
+                  - generic [ref=e467]: T9
+                  - generic [ref=e469]:
+                    - heading "Testing 96" [level=3] [ref=e471]
+                    - paragraph [ref=e472]: testing96@test.com
+                - generic [ref=e474]:
+                  - generic [ref=e477]: T5
+                  - generic [ref=e479]:
+                    - heading "Testing 59" [level=3] [ref=e481]
+                    - paragraph [ref=e482]: testing59@test.com
+                - generic [ref=e484]:
+                  - generic [ref=e487]: T2
+                  - generic [ref=e489]:
+                    - heading "Testing 22" [level=3] [ref=e491]
+                    - paragraph [ref=e492]: testing22@test.com
+                - generic [ref=e494]:
+                  - generic [ref=e497]: T5
+                  - generic [ref=e499]:
+                    - heading "Testing 52" [level=3] [ref=e501]
+                    - paragraph [ref=e502]: testing52@test.com
+                - generic [ref=e504]:
+                  - generic [ref=e507]: T7
+                  - generic [ref=e509]:
+                    - heading "Testing 74" [level=3] [ref=e511]
+                    - paragraph [ref=e512]: testing74@test.com
+                - generic [ref=e514]:
+                  - generic [ref=e517]: T8
+                  - generic [ref=e519]:
+                    - heading "Testing 83" [level=3] [ref=e521]
+                    - paragraph [ref=e522]: testing83@test.com
+                - generic [ref=e524]:
+                  - generic [ref=e527]: T8
+                  - generic [ref=e529]:
+                    - heading "Testing 87" [level=3] [ref=e531]
+                    - paragraph [ref=e532]: testing87@test.com
+                - generic [ref=e534]:
+                  - generic [ref=e537]: T4
+                  - generic [ref=e539]:
+                    - heading "Testing 4" [level=3] [ref=e541]
+                    - paragraph [ref=e542]: testing4@test.com
+                - generic [ref=e544]:
+                  - generic [ref=e547]: T6
+                  - generic [ref=e549]:
+                    - heading "Testing 61" [level=3] [ref=e551]
+                    - paragraph [ref=e552]: testing61@test.com
+                - generic [ref=e554]:
+                  - generic [ref=e557]: T2
+                  - generic [ref=e559]:
+                    - heading "Testing 2" [level=3] [ref=e561]
+                    - paragraph [ref=e562]: testing2@test.com
+                - generic [ref=e564]:
+                  - generic [ref=e567]: T1
+                  - generic [ref=e569]:
+                    - heading "Testing 13" [level=3] [ref=e571]
+                    - paragraph [ref=e572]: testing13@test.com
+                - generic [ref=e574]:
+                  - generic [ref=e577]: T8
+                  - generic [ref=e579]:
+                    - heading "Testing 8" [level=3] [ref=e581]
+                    - paragraph [ref=e582]: testing8@test.com
+                - generic [ref=e584]:
+                  - generic [ref=e587]: T9
+                  - generic [ref=e589]:
+                    - heading "Testing 91" [level=3] [ref=e591]
+                    - paragraph [ref=e592]: testing91@test.com
+                - generic [ref=e594]:
+                  - generic [ref=e597]: T5
+                  - generic [ref=e599]:
+                    - heading "Testing 57" [level=3] [ref=e601]
+                    - paragraph [ref=e602]: testing57@test.com
+                - generic [ref=e604]:
+                  - generic [ref=e607]: T4
+                  - generic [ref=e609]:
+                    - heading "Testing 41" [level=3] [ref=e611]
+                    - paragraph [ref=e612]: testing41@test.com
+                - generic [ref=e614]:
+                  - generic [ref=e617]: T6
+                  - generic [ref=e619]:
+                    - heading "Testing 64" [level=3] [ref=e621]
+                    - paragraph [ref=e622]: testing64@test.com
+                - generic [ref=e624]:
+                  - generic [ref=e627]: T7
+                  - generic [ref=e629]:
+                    - heading "Testing 77" [level=3] [ref=e631]
+                    - paragraph [ref=e632]: testing77@test.com
+                - generic [ref=e634]:
+                  - generic [ref=e637]: T1
+                  - generic [ref=e639]:
+                    - heading "Testing 12" [level=3] [ref=e641]
+                    - paragraph [ref=e642]: testing12@test.com
+                - generic [ref=e644]:
+                  - generic [ref=e647]: T1
+                  - generic [ref=e649]:
+                    - heading "Testing 17" [level=3] [ref=e651]
+                    - paragraph [ref=e652]: testing17@test.com
+                - generic [ref=e654]:
+                  - generic [ref=e657]: T5
+                  - generic [ref=e659]:
+                    - heading "Testing 50" [level=3] [ref=e661]
+                    - paragraph [ref=e662]: testing50@test.com
+                - generic [ref=e664]:
+                  - generic [ref=e667]: T5
+                  - generic [ref=e669]:
+                    - heading "Testing 53" [level=3] [ref=e671]
+                    - paragraph [ref=e672]: testing53@test.com
+                - generic [ref=e674]:
+                  - generic [ref=e677]: T2
+                  - generic [ref=e679]:
+                    - heading "Testing 24" [level=3] [ref=e681]
+                    - paragraph [ref=e682]: testing24@test.com
+                - generic [ref=e684]:
+                  - generic [ref=e687]: T9
+                  - generic [ref=e689]:
+                    - heading "Testing 93" [level=3] [ref=e691]
+                    - paragraph [ref=e692]: testing93@test.com
+                - generic [ref=e694]:
+                  - generic [ref=e697]: T2
+                  - generic [ref=e699]:
+                    - heading "Testing 21" [level=3] [ref=e701]
+                    - paragraph [ref=e702]: testing21@test.com
+                - generic [ref=e704]:
+                  - generic [ref=e707]: T3
+                  - generic [ref=e709]:
+                    - heading "Testing 38" [level=3] [ref=e711]
+                    - paragraph [ref=e712]: testing38@test.com
+                - generic [ref=e714]:
+                  - generic [ref=e717]: T5
+                  - generic [ref=e719]:
+                    - heading "Testing 55" [level=3] [ref=e721]
+                    - paragraph [ref=e722]: testing55@test.com
+                - generic [ref=e724]:
+                  - generic [ref=e727]: T6
+                  - generic [ref=e729]:
+                    - heading "Testing 66" [level=3] [ref=e731]
+                    - paragraph [ref=e732]: testing66@test.com
+                - generic [ref=e734]:
+                  - generic [ref=e737]: T2
+                  - generic [ref=e739]:
+                    - heading "Testing 28" [level=3] [ref=e741]
+                    - paragraph [ref=e742]: testing28@test.com
+                - generic [ref=e744]:
+                  - generic [ref=e747]: T1
+                  - generic [ref=e749]:
+                    - heading "Testing 16" [level=3] [ref=e751]
+                    - paragraph [ref=e752]: testing16@test.com
+                - generic [ref=e754]:
+                  - generic [ref=e757]: T2
+                  - generic [ref=e759]:
+                    - heading "Testing 20" [level=3] [ref=e761]
+                    - paragraph [ref=e762]: testing20@test.com
+                - generic [ref=e764]:
+                  - generic [ref=e767]: T2
+                  - generic [ref=e769]:
+                    - heading "Testing 25" [level=3] [ref=e771]
+                    - paragraph [ref=e772]: testing25@test.com
+                - generic [ref=e774]:
+                  - generic [ref=e777]: T4
+                  - generic [ref=e779]:
+                    - heading "Testing 42" [level=3] [ref=e781]
+                    - paragraph [ref=e782]: testing42@test.com
+                - generic [ref=e784]:
+                  - generic [ref=e787]: T2
+                  - generic [ref=e789]:
+                    - heading "Testing 27" [level=3] [ref=e791]
+                    - paragraph [ref=e792]: testing27@test.com
+                - generic [ref=e794]:
+                  - generic [ref=e797]: T6
+                  - generic [ref=e799]:
+                    - heading "Testing 67" [level=3] [ref=e801]
+                    - paragraph [ref=e802]: testing67@test.com
+                - generic [ref=e804]:
+                  - generic [ref=e807]: T6
+                  - generic [ref=e809]:
+                    - heading "Testing 6" [level=3] [ref=e811]
+                    - paragraph [ref=e812]: testing6@test.com
+                - generic [ref=e814]:
+                  - generic [ref=e817]: T9
+                  - generic [ref=e819]:
+                    - heading "Testing 92" [level=3] [ref=e821]
+                    - paragraph [ref=e822]: testing92@test.com
+                - generic [ref=e824]:
+                  - generic [ref=e827]: T2
+                  - generic [ref=e829]:
+                    - heading "Testing 29" [level=3] [ref=e831]
+                    - paragraph [ref=e832]: testing29@test.com
+                - generic [ref=e834]:
+                  - generic [ref=e837]: T6
+                  - generic [ref=e839]:
+                    - heading "Testing 60" [level=3] [ref=e841]
+                    - paragraph [ref=e842]: testing60@test.com
+                - generic [ref=e844]:
+                  - generic [ref=e847]: T7
+                  - generic [ref=e849]:
+                    - heading "Testing 73" [level=3] [ref=e851]
+                    - paragraph [ref=e852]: testing73@test.com
+                - generic [ref=e854]:
+                  - generic [ref=e857]: T3
+                  - generic [ref=e859]:
+                    - heading "Testing 30" [level=3] [ref=e861]
+                    - paragraph [ref=e862]: testing30@test.com
+                - generic [ref=e864]:
+                  - generic [ref=e867]: T5
+                  - generic [ref=e869]:
+                    - heading "Testing 56" [level=3] [ref=e871]
+                    - paragraph [ref=e872]: testing56@test.com
+                - generic [ref=e874]:
+                  - generic [ref=e877]: T8
+                  - generic [ref=e879]:
+                    - heading "Testing 81" [level=3] [ref=e881]
+                    - paragraph [ref=e882]: testing81@test.com
+                - generic [ref=e884]:
+                  - generic [ref=e887]: T4
+                  - generic [ref=e889]:
+                    - heading "Testing 40" [level=3] [ref=e891]
+                    - paragraph [ref=e892]: testing40@test.com
+                - generic [ref=e894]:
+                  - generic [ref=e897]: T9
+                  - generic [ref=e899]:
+                    - heading "Testing 97" [level=3] [ref=e901]
+                    - paragraph [ref=e902]: testing97@test.com
+                - generic [ref=e904]:
+                  - generic [ref=e907]: T8
+                  - generic [ref=e909]:
+                    - heading "Testing 84" [level=3] [ref=e911]
+                    - paragraph [ref=e912]: testing84@test.com
+                - generic [ref=e914]:
+                  - generic [ref=e917]: T4
+                  - generic [ref=e919]:
+                    - heading "Testing 49" [level=3] [ref=e921]
+                    - paragraph [ref=e922]: testing49@test.com
+                - generic [ref=e924]:
+                  - generic [ref=e927]: T4
+                  - generic [ref=e929]:
+                    - heading "Testing 44" [level=3] [ref=e931]
+                    - paragraph [ref=e932]: testing44@test.com
+                - generic [ref=e934]:
+                  - generic [ref=e937]: T5
+                  - generic [ref=e939]:
+                    - heading "Testing 58" [level=3] [ref=e941]
+                    - paragraph [ref=e942]: testing58@test.com
+                - generic [ref=e944]:
+                  - generic [ref=e947]: T9
+                  - generic [ref=e949]:
+                    - heading "Testing 94" [level=3] [ref=e951]
+                    - paragraph [ref=e952]: testing94@test.com
+                - generic [ref=e954]:
+                  - generic [ref=e957]: T8
+                  - generic [ref=e959]:
+                    - heading "Testing 85" [level=3] [ref=e961]
+                    - paragraph [ref=e962]: testing85@test.com
+                - generic [ref=e964]:
+                  - generic [ref=e967]: T2
+                  - generic [ref=e969]:
+                    - heading "Testing 26" [level=3] [ref=e971]
+                    - paragraph [ref=e972]: testing26@test.com
+                - generic [ref=e974]:
+                  - generic [ref=e977]: T1
+                  - generic [ref=e979]:
+                    - heading "Testing 100" [level=3] [ref=e981]
+                    - paragraph [ref=e982]: testing100@test.com
+                - generic [ref=e984]:
+                  - generic [ref=e987]: T3
+                  - generic [ref=e989]:
+                    - heading "Testing 39" [level=3] [ref=e991]
+                    - paragraph [ref=e992]: testing39@test.com
+                - generic [ref=e994]:
+                  - generic [ref=e997]: T7
+                  - generic [ref=e999]:
+                    - heading "Testing 75" [level=3] [ref=e1001]
+                    - paragraph [ref=e1002]: testing75@test.com
+                - generic [ref=e1004]:
+                  - generic [ref=e1007]: T3
+                  - generic [ref=e1009]:
+                    - heading "Testing 34" [level=3] [ref=e1011]
+                    - paragraph [ref=e1012]: testing34@test.com
+                - generic [ref=e1014]:
+                  - generic [ref=e1017]: T8
+                  - generic [ref=e1019]:
+                    - heading "Testing 88" [level=3] [ref=e1021]
+                    - paragraph [ref=e1022]: testing88@test.com
+                - generic [ref=e1024]:
+                  - generic [ref=e1027]: T8
+                  - generic [ref=e1029]:
+                    - heading "Testing 86" [level=3] [ref=e1031]
+                    - paragraph [ref=e1032]: testing86@test.com
+                - generic [ref=e1034]:
+                  - generic [ref=e1037]: T4
+                  - generic [ref=e1039]:
+                    - heading "Testing 47" [level=3] [ref=e1041]
+                    - paragraph [ref=e1042]: testing47@test.com
+                - generic [ref=e1044]:
+                  - generic [ref=e1047]: T9
+                  - generic [ref=e1049]:
+                    - heading "Testing 9" [level=3] [ref=e1051]
+                    - paragraph [ref=e1052]: testing9@test.com
+                - generic [ref=e1054]:
+                  - generic [ref=e1057]: T6
+                  - generic [ref=e1059]:
+                    - heading "Testing 63" [level=3] [ref=e1061]
+                    - paragraph [ref=e1062]: testing63@test.com
+                - generic [ref=e1064]:
+                  - generic [ref=e1067]: T7
+                  - generic [ref=e1069]:
+                    - heading "Testing 78" [level=3] [ref=e1071]
+                    - paragraph [ref=e1072]: testing78@test.com
+                - generic [ref=e1074]:
+                  - generic [ref=e1077]: T2
+                  - generic [ref=e1079]:
+                    - heading "Testing 23" [level=3] [ref=e1081]
+                    - paragraph [ref=e1082]: testing23@test.com
+                - generic [ref=e1084]:
+                  - generic [ref=e1087]: T7
+                  - generic [ref=e1089]:
+                    - heading "Testing 79" [level=3] [ref=e1091]
+                    - paragraph [ref=e1092]: testing79@test.com
+                - generic [ref=e1094]:
+                  - generic [ref=e1097]: T3
+                  - generic [ref=e1099]:
+                    - heading "Testing 31" [level=3] [ref=e1101]
+                    - paragraph [ref=e1102]: testing31@test.com
+                - generic [ref=e1104]:
+                  - generic [ref=e1107]: T1
+                  - generic [ref=e1109]:
+                    - heading "Testing 10" [level=3] [ref=e1111]
+                    - paragraph [ref=e1112]: testing10@test.com
+                - generic [ref=e1114]:
+                  - generic [ref=e1117]: T7
+                  - generic [ref=e1119]:
+                    - heading "Testing 76" [level=3] [ref=e1121]
+                    - paragraph [ref=e1122]: testing76@test.com
+                - generic [ref=e1124]:
+                  - generic [ref=e1127]: T9
+                  - generic [ref=e1129]:
+                    - heading "Testing 99" [level=3] [ref=e1131]
+                    - paragraph [ref=e1132]: testing99@test.com
+                - generic [ref=e1134]:
+                  - generic [ref=e1137]: T1
+                  - generic [ref=e1139]:
+                    - heading "Testing 15" [level=3] [ref=e1141]
+                    - paragraph [ref=e1142]: testing15@test.com
+                - generic [ref=e1144]:
+                  - generic [ref=e1147]: T3
+                  - generic [ref=e1149]:
+                    - heading "Testing 33" [level=3] [ref=e1151]
+                    - paragraph [ref=e1152]: testing33@test.com
+                - generic [ref=e1154]:
+                  - generic [ref=e1157]: T6
+                  - generic [ref=e1159]:
+                    - heading "Testing 65" [level=3] [ref=e1161]
+                    - paragraph [ref=e1162]: testing65@test.com
+                - generic [ref=e1164]:
+                  - generic [ref=e1167]: T3
+                  - generic [ref=e1169]:
+                    - heading "Testing 37" [level=3] [ref=e1171]
+                    - paragraph [ref=e1172]: testing37@test.com
+                - generic [ref=e1174]:
+                  - generic [ref=e1177]: T8
+                  - generic [ref=e1179]:
+                    - heading "Testing 82" [level=3] [ref=e1181]
+                    - paragraph [ref=e1182]: testing82@test.com
+                - generic [ref=e1184]:
+                  - generic [ref=e1187]: T6
+                  - generic [ref=e1189]:
+                    - heading "Testing 69" [level=3] [ref=e1191]
+                    - paragraph [ref=e1192]: testing69@test.com
+                - generic [ref=e1194]:
+                  - generic [ref=e1197]: T9
+                  - generic [ref=e1199]:
+                    - heading "Testing 98" [level=3] [ref=e1201]
+                    - paragraph [ref=e1202]: testing98@test.com
+                - generic [ref=e1204]:
+                  - generic [ref=e1207]: T3
+                  - generic [ref=e1209]:
+                    - heading "Testing 32" [level=3] [ref=e1211]
+                    - paragraph [ref=e1212]: testing32@test.com
+                - generic [ref=e1214]:
+                  - generic [ref=e1217]: QT
+                  - generic [ref=e1219]:
+                    - heading "Qa Test1" [level=3] [ref=e1221]
+                    - paragraph [ref=e1222]: qa.test1@tenant.com
+                - generic [ref=e1224]:
+                  - generic [ref=e1227]: T9
+                  - generic [ref=e1229]:
+                    - heading "Testing 95" [level=3] [ref=e1231]
+                    - paragraph [ref=e1232]: testing95@test.com
+                - generic [ref=e1234]:
+                  - generic [ref=e1237]: T4
+                  - generic [ref=e1239]:
+                    - heading "Testing 48" [level=3] [ref=e1241]
+                    - paragraph [ref=e1242]: testing48@test.com
+                - generic [ref=e1244]:
+                  - generic [ref=e1247]: T8
+                  - generic [ref=e1249]:
+                    - heading "Testing 89" [level=3] [ref=e1251]
+                    - paragraph [ref=e1252]: testing89@test.com
+                - generic [ref=e1254]:
+                  - generic [ref=e1257]: T3
+                  - generic [ref=e1259]:
+                    - heading "Testing 35" [level=3] [ref=e1261]
+                    - paragraph [ref=e1262]: testing35@test.com
+                - generic [ref=e1264]:
+                  - generic [ref=e1267]: T7
+                  - generic [ref=e1269]:
+                    - heading "Testing 7" [level=3] [ref=e1271]
+                    - paragraph [ref=e1272]: testing7@test.com
+                - generic [ref=e1274]:
+                  - generic [ref=e1277]: HI
+                  - generic [ref=e1279]:
+                    - heading "Hajar Istesting" [level=3] [ref=e1281]
+                    - paragraph [ref=e1282]: Khdama Lweekend
+                    - paragraph [ref=e1283]: kevove5811@gamegta.com
+                - generic [ref=e1285]:
+                  - generic [ref=e1288]: T6
+                  - generic [ref=e1290]:
+                    - heading "Testing 68" [level=3] [ref=e1292]
+                    - paragraph [ref=e1293]: testing68@test.com
+                - generic [ref=e1295]:
+                  - generic [ref=e1298]: TQ
+                  - generic [ref=e1300]:
+                    - heading "Testing Queues" [level=3] [ref=e1302]
+                    - paragraph [ref=e1303]: tester
+                    - paragraph [ref=e1304]: workflow_que_test@yopmail.com
+                - generic [ref=e1306]:
+                  - generic [ref=e1309]: T1
+                  - generic [ref=e1311]:
+                    - heading "Testing 11" [level=3] [ref=e1313]
+                    - paragraph [ref=e1314]: testing11@test.com
+                - generic [ref=e1316]:
+                  - generic [ref=e1319]: T3
+                  - generic [ref=e1321]:
+                    - heading "Testing 36" [level=3] [ref=e1323]
+                    - paragraph [ref=e1324]: testing36@test.com
+                - generic [ref=e1326]:
+                  - generic [ref=e1329]: T9
+                  - generic [ref=e1331]:
+                    - heading "Testing 90" [level=3] [ref=e1333]
+                    - paragraph [ref=e1334]: testing90@test.com
+                - generic [ref=e1336]:
+                  - generic [ref=e1339]: T4
+                  - generic [ref=e1341]:
+                    - heading "Testing 43" [level=3] [ref=e1343]
+                    - paragraph [ref=e1344]: testing43@test.com
+                - generic [ref=e1346]:
+                  - generic [ref=e1349]: T7
+                  - generic [ref=e1351]:
+                    - heading "Testing 70" [level=3] [ref=e1353]
+                    - paragraph [ref=e1354]: testing70@test.com
+                - generic [ref=e1356]:
+                  - generic [ref=e1359]: T4
+                  - generic [ref=e1361]:
+                    - heading "Testing 46" [level=3] [ref=e1363]
+                    - paragraph [ref=e1364]: testing46@test.com
+                - generic [ref=e1366]:
+                  - generic [ref=e1369]: T8
+                  - generic [ref=e1371]:
+                    - heading "Testing 80" [level=3] [ref=e1373]
+                    - paragraph [ref=e1374]: testing80@test.com
+                - generic [ref=e1376]:
+                  - generic [ref=e1379]: T1
+                  - generic [ref=e1381]:
+                    - heading "Testing 14" [level=3] [ref=e1383]
+                    - paragraph [ref=e1384]: testing14@test.com
+                - generic [ref=e1386]:
+                  - generic [ref=e1389]: T5
+                  - generic [ref=e1391]:
+                    - heading "Testing 54" [level=3] [ref=e1393]
+                    - paragraph [ref=e1394]: testing54@test.com
+                - generic [ref=e1396]:
+                  - generic [ref=e1399]: T4
+                  - generic [ref=e1401]:
+                    - heading "Testing 45" [level=3] [ref=e1403]
+                    - paragraph [ref=e1404]: testing45@test.com
+                - generic [ref=e1406]:
+                  - generic [ref=e1409]: T5
+                  - generic [ref=e1411]:
+                    - heading "Testing 5" [level=3] [ref=e1413]
+                    - paragraph [ref=e1414]: testing5@test.com
+                - generic [ref=e1416]:
+                  - generic [ref=e1419]: T7
+                  - generic [ref=e1421]:
+                    - heading "Testing 71" [level=3] [ref=e1423]
+                    - paragraph [ref=e1424]: testing71@test.com
+                - generic [ref=e1426]:
+                  - generic [ref=e1429]: QT
+                  - generic [ref=e1431]:
+                    - heading "Qa Test" [level=3] [ref=e1433]
+                    - paragraph [ref=e1434]: qa.test@tenant.com
+                - generic [ref=e1436]:
+                  - generic [ref=e1439]: T5
+                  - generic [ref=e1441]:
+                    - heading "Testing 51" [level=3] [ref=e1443]
+                    - paragraph [ref=e1444]: testing51@test.com
+  - button "Attijari bank Mascot" [ref=e1446] [cursor=pointer]:
+    - img "Attijari bank Mascot" [ref=e1447]
+  - region "Notifications alt+T"
+  - alert [ref=e1448]: GamiTool - Gamified Employee Onboarding & Learning Platform
+```

@@ -97,13 +97,14 @@ test.describe("Mission workflow", {
 
             // const missionId = await mission.goto(1);
             // await mission.startMission();
-            const filePath =  generateFile("test-file.docx", 10);
+            const fileName="test-file.docx";
+            const filePath =  generateFile(fileName, 10);
 
             // upload file
 
             await mission.uploadFile(filePath);
 
-            await mission.fillDescription("file description");
+            await mission.fillDescription("file description",fileName);
 
             await mission.addFile();
 

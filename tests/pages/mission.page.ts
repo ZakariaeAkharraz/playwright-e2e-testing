@@ -1,5 +1,6 @@
 import { expect, Page } from "@playwright/test";
 import { Program } from "./program.page";
+import path from "path";
 
 
 
@@ -32,7 +33,7 @@ export class Mission {
     async closeMission() {
         await this.page.getByRole('button', { name: 'Terminer la mission' }).click();
         await this.page.getByRole('button', { name: 'Confirmer' }).click();
-        await this.page.waitForTimeout(3000)
+        // await this.page.waitForTimeout(3000)
         // await this.page.waitForURL(/.*projects/)
 
     }
@@ -42,6 +43,28 @@ export class Mission {
         // await expect(missionCompleted).toHaveAttribute("data-status","completed");
 
         await expect(missionCompleted).toHaveText(/[1-9]* coins/i);
+
+    }
+    
+    async missionUploadFile() {
+        const missionId = await this.goto(1);
+        await this.startMission();
+        // await generateFile();
+        const fileName = "test-file.doc"
+        const filepath = path.join("playwright/temp", fileName);
+
+        await this.uploadFile(filepath);
+        await this.fillDescription("test descriptiontest descriptiontest description", fileName);
+        await this.addFile();
+        await this.closeMission();
+        // await this.assertMissionComplete(missionId!);
+    }
+
+    async missionMediaVisualization(){
+        const missionId = await this.goto(2);
+        await this.startMission();
+
+
 
     }
 
@@ -54,12 +77,14 @@ export class Mission {
 
     }
 
-    async fillDescription(description: string) {
-        await this.page.getByRole('textbox', { name: 'test-file.docx' }).fill(description);
+    async fillDescription(description: string, fileName: string) {
+        await this.page.getByRole('textbox', { name: fileName }).fill(description);
     }
 
-    async addFile(){
-        await this.page.getByRole('button', { name: 'Télécharger le document' }).click();
+    async addFile() {
+        const submitButton = await this.page.getByRole('button', { name: 'Télécharger le document' });
+        await submitButton.click();
+        await submitButton.waitFor({state:"hidden"})
     }
 
     async uploadUnsupportedFile(filePath: string, page: Page) {

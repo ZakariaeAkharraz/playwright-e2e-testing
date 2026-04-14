@@ -10,11 +10,11 @@ type StepMetric = {
 class MetricsCollector {
     private steps: Record<string, StepMetric> = {};
 
-    async measure(page: Page, stepName: string, fn: () => Promise<void>) {
+    async measure(page:Page,stepName: string, fn: () => Promise<void>) {
         const start = performance.now();
 
         await fn();
-        await page.waitForLoadState('load');
+        // await page.waitForLoadState('load');
 
         const duration = performance.now() - start;
 
@@ -39,16 +39,16 @@ class MetricsCollector {
             const avg =
                 sortedDurations.reduce((a, b) => a + b, 0) / sortedDurations.length;
             const min = sortedDurations[0];
-            const max = sortedDurations[sortedDurations.length - 1];
+            const max = sortedDurations[sortedDurations.length-1];
             const p50 = this.percentile(sortedDurations, 50);
             const p90 = this.percentile(sortedDurations, 90);
             const p95 = this.percentile(sortedDurations, 95);
-
+            
 
             result[stepName] = {
                 count: sortedDurations.length,
-                avg: `${avg.toFixed(0)}ms`.padEnd(8),
                 min: `${min.toFixed(0)}ms`.padEnd(8),
+                avg: `${avg.toFixed(0)}ms`.padEnd(8),
                 max: `${max.toFixed(0)}ms`.padEnd(8),
                 p50: `${p50.toFixed(0)}ms`.padEnd(8),
                 p90: `${p90.toFixed(0)}ms`.padEnd(8),

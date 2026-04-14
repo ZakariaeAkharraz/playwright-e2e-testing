@@ -1,0 +1,527 @@
+testing2@test.com in the dashboard
+testing3@test.com in the dashboard
+testing1@test.com in the dashboard
+testing4@test.com in the dashboard
+testing3@test.com in the arena page
+testing2@test.com in the arena page
+testing1@test.com in the arena page
+testing4@test.com in the arena page
+testing3@test.com in the program page
+testing32@test.com in the dashboard
+testing48@test.com in the dashboard
+testing75@test.com in the dashboard
+testing79@test.com in the dashboard
+testing8@test.com in the dashboard
+testing90@test.com in the dashboard
+testing18@test.com in the dashboard
+testing59@test.com in the dashboard
+testing27@test.com in the dashboard
+testing82@test.com in the dashboard
+testing22@test.com in the dashboard
+testing65@test.com in the dashboard
+testing54@test.com in the dashboard
+testing93@test.com in the dashboard
+testing10@test.com in the dashboard
+testing99@test.com in the dashboard
+testing52@test.com in the dashboard
+testing17@test.com in the dashboard
+testing97@test.com in the dashboard
+testing30@test.com in the dashboard
+testing74@test.com in the dashboard
+testing60@test.com in the dashboard
+testing80@test.com in the dashboard
+testing98@test.com in the dashboard
+testing5@test.com in the dashboard
+testing9@test.com in the dashboard
+testing39@test.com in the dashboard
+testing38@test.com in the dashboard
+testing20@test.com in the dashboard
+testing36@test.com in the dashboard
+testing7@test.com in the dashboard
+testing31@test.com in the dashboard
+testing1@test.com in the program page
+testing2@test.com in the program page
+testing4@test.com in the program page
+testing94@test.com in the dashboard
+testing21@test.com in the dashboard
+testing46@test.com in the dashboard
+testing88@test.com in the dashboard
+testing16@test.com in the dashboard
+testing57@test.com in the dashboard
+testing53@test.com in the dashboard
+testing33@test.com in the dashboard
+testing69@test.com in the dashboard
+testing12@test.com in the dashboard
+testing61@test.com in the dashboard
+testing29@test.com in the dashboard
+testing25@test.com in the dashboard
+testing58@test.com in the dashboard
+testing77@test.com in the dashboard
+testing26@test.com in the dashboard
+testing44@test.com in the dashboard
+testing37@test.com in the dashboard
+testing85@test.com in the dashboard
+testing48@test.com in the arena page
+testing56@test.com in the dashboard
+testing71@test.com in the dashboard
+testing32@test.com in the arena page
+testing55@test.com in the dashboard
+testing34@test.com in the dashboard
+testing11@test.com in the dashboard
+testing75@test.com in the arena page
+testing73@test.com in the dashboard
+testing19@test.com in the dashboard
+testing8@test.com in the arena page
+testing63@test.com in the dashboard
+testing76@test.com in the dashboard
+testing79@test.com in the arena page
+testing14@test.com in the dashboard
+testing89@test.com in the dashboard
+testing41@test.com in the dashboard
+testing51@test.com in the dashboard
+testing47@test.com in the dashboard
+testing70@test.com in the dashboard
+testing90@test.com in the arena page
+testing49@test.com in the dashboard
+testing22@test.com in the arena page
+testing50@test.com in the dashboard
+testing65@test.com in the arena page
+testing24@test.com in the dashboard
+testing59@test.com in the arena page
+testing72@test.com in the dashboard
+testing100@test.com in the dashboard
+testing27@test.com in the arena page
+testing68@test.com in the dashboard
+testing96@test.com in the dashboard
+testing83@test.com in the dashboard
+testing6@test.com in the dashboard
+testing82@test.com in the arena page
+testing18@test.com in the arena page
+testing54@test.com in the arena page
+testing78@test.com in the dashboard
+testing86@test.com in the dashboard
+testing43@test.com in the dashboard
+testing64@test.com in the dashboard
+testing91@test.com in the dashboard
+testing52@test.com in the arena page
+testing93@test.com in the arena page
+testing45@test.com in the dashboard
+testing84@test.com in the dashboard
+testing99@test.com in the arena page
+testing30@test.com in the arena page
+testing17@test.com in the arena page
+testing81@test.com in the dashboard
+testing87@test.com in the dashboard
+testing35@test.com in the dashboard
+testing62@test.com in the dashboard
+testing97@test.com in the arena page
+testing15@test.com in the dashboard
+testing67@test.com in the dashboard
+testing42@test.com in the dashboard
+testing28@test.com in the dashboard
+testing40@test.com in the dashboard
+testing92@test.com in the dashboard
+testing66@test.com in the dashboard
+testing13@test.com in the dashboard
+testing23@test.com in the dashboard
+testing95@test.com in the dashboard
+testing74@test.com in the arena page
+testing5@test.com in the arena page
+testing98@test.com in the arena page
+testing80@test.com in the arena page
+testing39@test.com in the arena page
+testing38@test.com in the arena page
+testing31@test.com in the arena page
+testing20@test.com in the arena page
+testing7@test.com in the arena page
+testing88@test.com in the arena page
+testing16@test.com in the arena page
+testing57@test.com in the arena page
+testing32@test.com in the program page
+testing12@test.com in the arena page
+testing33@test.com in the arena page
+testing61@test.com in the arena page
+testing25@test.com in the arena page
+testing37@test.com in the arena page
+testing58@test.com in the arena page
+testing48@test.com in the program page
+testing75@test.com in the program page
+testing8@test.com in the program page
+testing90@test.com in the program page
+testing22@test.com in the program page
+testing65@test.com in the program page
+testing53@test.com in the arena page
+testing69@test.com in the arena page
+testing79@test.com in the program page
+testing18@test.com in the program page
+testing97@test.com in the program page
+testing27@test.com in the program page
+testing82@test.com in the program page
+testing52@test.com in the program page
+testing26@test.com in the arena page
+testing85@test.com in the arena page
+testing29@test.com in the arena page
+testing93@test.com in the program page
+testing30@test.com in the program page
+testing54@test.com in the program page
+testing59@test.com in the program page
+testing77@test.com in the arena page
+testing99@test.com in the program page
+testing63@test.com in the arena page
+testing44@test.com in the arena page
+testing56@test.com in the arena page
+testing38@test.com in the program page
+testing73@test.com in the arena page
+testing17@test.com in the program page
+testing55@test.com in the arena page
+testing11@test.com in the arena page
+testing74@test.com in the program page
+testing14@test.com in the arena page
+testing5@test.com in the program page
+testing3@test.com finished mission
+testing51@test.com in the arena page
+testing68@test.com in the arena page
+testing47@test.com in the arena page
+testing71@test.com in the arena page
+testing89@test.com in the arena page
+testing7@test.com in the program page
+testing19@test.com in the arena page
+testing49@test.com in the arena page
+testing81@test.com in the arena page
+testing84@test.com in the arena page
+testing24@test.com in the arena page
+testing100@test.com in the arena page
+testing96@test.com in the arena page
+testing31@test.com in the program page
+testing66@test.com in the arena page
+testing20@test.com in the program page
+testing80@test.com in the program page
+testing64@test.com in the arena page
+testing70@test.com in the arena page
+testing98@test.com in the program page
+testing72@test.com in the arena page
+testing57@test.com in the program page
+testing88@test.com in the program page
+testing83@test.com in the arena page
+testing78@test.com in the arena page
+testing40@test.com in the arena page
+testing67@test.com in the arena page
+testing13@test.com in the arena page
+testing15@test.com in the arena page
+testing16@test.com in the program page
+testing33@test.com in the program page
+testing61@test.com in the program page
+testing95@test.com in the arena page
+testing37@test.com in the program page
+testing25@test.com in the program page
+testing39@test.com in the program page
+testing28@test.com in the arena page
+testing12@test.com in the program page
+testing50@test.com in the arena page
+testing58@test.com in the program page
+testing56@test.com in the program page
+testing91@test.com in the arena page
+testing87@test.com in the arena page
+testing41@test.com in the arena page
+testing34@test.com in the arena page
+testing86@test.com in the arena page
+testing76@test.com in the arena page
+testing85@test.com in the program page
+testing35@test.com in the arena page
+testing45@test.com in the arena page
+testing62@test.com in the arena page
+testing43@test.com in the arena page
+testing23@test.com in the arena page
+testing6@test.com in the arena page
+testing26@test.com in the program page
+testing55@test.com in the program page
+testing71@test.com in the program page
+testing89@test.com in the program page
+testing92@test.com in the arena page
+testing84@test.com in the program page
+testing42@test.com in the arena page
+testing51@test.com in the program page
+testing63@test.com in the program page
+testing24@test.com in the program page
+testing96@test.com in the program page
+testing47@test.com in the program page
+testing68@test.com in the program page
+testing100@test.com in the program page
+testing64@test.com in the program page
+testing70@test.com in the program page
+testing83@test.com in the program page
+testing81@test.com in the program page
+testing40@test.com in the program page
+testing72@test.com in the program page
+testing78@test.com in the program page
+testing28@test.com in the program page
+testing15@test.com in the program page
+testing67@test.com in the program page
+testing13@test.com in the program page
+testing53@test.com in the program page
+testing95@test.com in the program page
+testing66@test.com in the program page
+testing69@test.com in the program page
+testing6@test.com in the program page
+testing77@test.com in the program page
+testing29@test.com in the program page
+testing44@test.com in the program page
+testing73@test.com in the program page
+testing11@test.com in the program page
+testing19@test.com in the program page
+testing49@test.com in the program page
+testing14@test.com in the program page
+testing91@test.com in the program page
+testing87@test.com in the program page
+testing41@test.com in the program page
+testing1@test.com finished mission
+testing76@test.com in the program page
+testing86@test.com in the program page
+testing2@test.com finished mission
+testing34@test.com in the program page
+testing50@test.com in the program page
+testing43@test.com in the program page
+testing45@test.com in the program page
+testing62@test.com in the program page
+testing35@test.com in the program page
+testing23@test.com in the program page
+testing92@test.com in the program page
+testing42@test.com in the program page
+testing4@test.com finished mission
+testing48@test.com finished mission
+testing82@test.com finished mission
+testing90@test.com finished mission
+testing79@test.com finished mission
+testing22@test.com finished mission
+testing30@test.com finished mission
+testing16@test.com finished mission
+testing32@test.com finished mission
+testing75@test.com finished mission
+testing18@test.com finished mission
+testing59@test.com finished mission
+testing12@test.com finished mission
+testing17@test.com finished mission
+testing33@test.com finished mission
+testing99@test.com finished mission
+testing8@test.com finished mission
+testing65@test.com finished mission
+testing80@test.com finished mission
+testing27@test.com finished mission
+testing54@test.com finished mission
+testing52@test.com finished mission
+testing57@test.com finished mission
+testing100@test.com finished mission
+testing35@test.com finished mission
+testing76@test.com finished mission
+testing29@test.com finished mission
+testing84@test.com finished mission
+testing11@test.com finished mission
+testing93@test.com finished mission
+testing98@test.com finished mission
+testing56@test.com finished mission
+testing58@test.com finished mission
+testing88@test.com finished mission
+testing31@test.com finished mission
+testing51@test.com finished mission
+testing71@test.com finished mission
+testing20@test.com finished mission
+testing39@test.com finished mission
+testing64@test.com finished mission
+testing61@test.com finished mission
+testing97@test.com finished mission
+testing72@test.com finished mission
+testing77@test.com finished mission
+testing74@test.com finished mission
+testing26@test.com finished mission
+testing38@test.com finished mission
+testing7@test.com finished mission
+testing5@test.com finished mission
+testing24@test.com finished mission
+testing55@test.com finished mission
+testing49@test.com finished mission
+testing42@test.com finished mission
+testing47@test.com finished mission
+testing70@test.com finished mission
+testing25@test.com finished mission
+testing40@test.com finished mission
+testing91@test.com finished mission
+testing13@test.com finished mission
+testing53@test.com finished mission
+testing89@test.com finished mission
+testing50@test.com finished mission
+testing83@test.com finished mission
+testing85@test.com finished mission
+testing96@test.com finished mission
+testing95@test.com finished mission
+testing15@test.com finished mission
+testing81@test.com finished mission
+testing14@test.com finished mission
+testing28@test.com finished mission
+testing87@test.com finished mission
+testing78@test.com finished mission
+testing45@test.com finished mission
+testing68@test.com finished mission
+testing92@test.com finished mission
+testing63@test.com finished mission
+testing69@test.com finished mission
+testing73@test.com finished mission
+testing23@test.com finished mission
+testing86@test.com finished mission
+testing6@test.com finished mission
+testing67@test.com finished mission
+testing44@test.com finished mission
+testing62@test.com finished mission
+testing66@test.com finished mission
+testing41@test.com finished mission
+testing34@test.com finished mission
+testing19@test.com finished mission
+testing43@test.com finished mission
+
+📊 Step Metrics:
+{
+  "user login to dashboard": {
+    "count": 100,
+    "min": "48926ms ",
+    "avg": "69731ms ",
+    "max": "83522ms ",
+    "p50": "71636ms ",
+    "p90": "82245ms ",
+    "p95": "82853ms "
+  },
+  "dashboard to arena": {
+    "count": 93,
+    "min": "3079ms  ",
+    "avg": "30017ms ",
+    "max": "44140ms ",
+    "p50": "33210ms ",
+    "p90": "38109ms ",
+    "p95": "39258ms "
+  },
+  "user navigate to program": {
+    "count": 93,
+    "min": "2606ms  ",
+    "avg": "17823ms ",
+    "max": "33438ms ",
+    "p50": "18029ms ",
+    "p90": "29859ms ",
+    "p95": "31521ms "
+  },
+  "mission upload doc": {
+    "count": 92,
+    "min": "56513ms ",
+    "avg": "102764ms",
+    "max": "126918ms",
+    "p50": "107041ms",
+    "p90": "121804ms",
+    "p95": "123178ms"
+  }
+}
+User 9 failed with error: Error: expect(page).toHaveURL(expected) failed
+
+Expected pattern: /Demo.+Arena/
+Received string:  "https://dev.gamitool.com/fr/arenas/819c2f67-12a9-47d7-9ef5-ab0be4ff4c1a?arenaName=QA%20Testing%20Arenaaaa"
+Timeout: 500ms
+
+Call log:
+  - Expect "toHaveURL" with timeout 500ms
+    4 × unexpected value "https://dev.gamitool.com/fr/arenas/819c2f67-12a9-47d7-9ef5-ab0be4ff4c1a?arenaName=QA%20Testing%20Arenaaaa"
+
+
+Call Log:
+- Timeout 10000ms exceeded while waiting on the predicate
+User 10 failed with error: Error: expect(page).toHaveURL(expected) failed
+
+Expected pattern: /Demo.+Arena/
+Received string:  "https://dev.gamitool.com/fr/arenas/819c2f67-12a9-47d7-9ef5-ab0be4ff4c1a?arenaName=QA%20Testing%20Arenaaaa"
+Timeout: 500ms
+
+Call log:
+  - Expect "toHaveURL" with timeout 500ms
+    4 × unexpected value "https://dev.gamitool.com/fr/arenas/819c2f67-12a9-47d7-9ef5-ab0be4ff4c1a?arenaName=QA%20Testing%20Arenaaaa"
+
+
+Call Log:
+- Timeout 10000ms exceeded while waiting on the predicate
+User 21 failed with error: Error: expect(page).toHaveURL(expected) failed
+
+Expected pattern: /Demo.+Arena/
+Received string:  "https://dev.gamitool.com/fr/arenas/819c2f67-12a9-47d7-9ef5-ab0be4ff4c1a?arenaName=QA%20Testing%20Arenaaaa"
+Timeout: 500ms
+
+Call log:
+  - Expect "toHaveURL" with timeout 500ms
+    4 × unexpected value "https://dev.gamitool.com/fr/arenas/819c2f67-12a9-47d7-9ef5-ab0be4ff4c1a?arenaName=QA%20Testing%20Arenaaaa"
+
+
+Call Log:
+- Timeout 10000ms exceeded while waiting on the predicate
+User 36 failed with error: Error: expect(page).toHaveURL(expected) failed
+
+Expected pattern: /Demo.+Arena/
+Received string:  "https://dev.gamitool.com/fr/arenas/819c2f67-12a9-47d7-9ef5-ab0be4ff4c1a?arenaName=QA%20Testing%20Arenaaaa"
+Timeout: 500ms
+
+Call log:
+  - Expect "toHaveURL" with timeout 500ms
+    4 × unexpected value "https://dev.gamitool.com/fr/arenas/819c2f67-12a9-47d7-9ef5-ab0be4ff4c1a?arenaName=QA%20Testing%20Arenaaaa"
+
+
+Call Log:
+- Timeout 10000ms exceeded while waiting on the predicate
+User 37 failed with error: Error: locator.click: Test ended.
+Call log:
+  - waiting for getByRole('button', { name: 'Terminer la mission' })
+    - locator resolved to <button disabled class="inline-flex cursor-pointer items-center justify-center border gap-2 whitespace-nowrap font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-primary/50 disabled:pointer-events-none disabled:opacity-40 shadow-md hover:shadow-lg border-primary bg-primary text-white hover:bg-primary/90 h-11 px-4 rounded-2xl text-sm false">Terminer la mission</button>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+      - waiting 100ms
+    705 × waiting for element to be visible, enabled and stable
+        - element is not enabled
+      - retrying click action
+        - waiting 500ms
+
+User 46 failed with error: Error: expect(page).toHaveURL(expected) failed
+
+Expected pattern: /Demo.+Arena/
+Received string:  "https://dev.gamitool.com/fr/arenas/819c2f67-12a9-47d7-9ef5-ab0be4ff4c1a?arenaName=QA%20Testing%20Arenaaaa"
+Timeout: 500ms
+
+Call log:
+  - Expect "toHaveURL" with timeout 500ms
+    - unexpected value "https://dev.gamitool.com/fr/arenas/819c2f67-12a9-47d7-9ef5-ab0be4ff4c1a?arenaName=QA%20Testing%20Arenaaaa"
+
+
+Call Log:
+- Timeout 10000ms exceeded while waiting on the predicate
+User 60 failed with error: Error: expect(page).toHaveURL(expected) failed
+
+Expected pattern: /Demo.+Arena/
+Received string:  "https://dev.gamitool.com/fr/arenas/819c2f67-12a9-47d7-9ef5-ab0be4ff4c1a?arenaName=QA%20Testing%20Arenaaaa"
+Timeout: 500ms
+
+Call log:
+  - Expect "toHaveURL" with timeout 500ms
+    4 × unexpected value "https://dev.gamitool.com/fr/arenas/819c2f67-12a9-47d7-9ef5-ab0be4ff4c1a?arenaName=QA%20Testing%20Arenaaaa"
+
+
+Call Log:
+- Timeout 10000ms exceeded while waiting on the predicate
+User 94 failed with error: Error: expect(page).toHaveURL(expected) failed
+
+Expected pattern: /Demo.+Arena/
+Received string:  "https://dev.gamitool.com/fr/arenas/819c2f67-12a9-47d7-9ef5-ab0be4ff4c1a?arenaName=QA%20Testing%20Arenaaaa"
+Timeout: 500ms
+
+Call log:
+  - Expect "toHaveURL" with timeout 500ms
+    4 × unexpected value "https://dev.gamitool.com/fr/arenas/819c2f67-12a9-47d7-9ef5-ab0be4ff4c1a?arenaName=QA%20Testing%20Arenaaaa"
+
+
+Call Log:
+- Timeout 10000ms exceeded while waiting on the predicate
