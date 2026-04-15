@@ -18,11 +18,11 @@ export class Arena {
         await this.page.waitForURL(/.*arenas.*/);
 
     }
-    async openSpecificArena() {
+    async openSpecificArena(ArenaName="Qa Arena") {
         // await this.page.waitForLoadState('load')
 
             const arenaLink = await this.page.getByTestId(/^sidebar-nav-child-arenas/).filter({
-                hasText: 'Demo Arena'
+                hasText: ArenaName
             });
             const arenaTestId = await arenaLink.getAttribute("data-testid");
             const arenaId=arenaTestId?.match(/sidebar-nav-child-arenas-([^?]+)/)?.[1];
@@ -36,7 +36,6 @@ export class Arena {
 
             await arenaResponsePromise;
 
-        // await this.page.waitForURL(/Demo.Arena/);
 
     }
 

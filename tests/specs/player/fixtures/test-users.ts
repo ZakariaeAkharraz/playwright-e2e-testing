@@ -4,7 +4,7 @@ import fs from 'fs'
 export type User={
         email:string,
         password: string,
-        workflowId: "69cbe2612d6d77a96a84accc"
+        workflowId: "69df9296c0aa97ff39362bb9"
 }
 
 export const TEST_USER = {
@@ -27,8 +27,8 @@ export const QA_USER = {
 
         workflow: {
                 projectName: "QA Project",
-                id: "69cbe2612d6d77a96a84accc",
-                path: "/projects/69cbe2612d6d77a96a84accc",
+                id: "69df9296c0aa97ff39362bb9",
+                path: "/projects/69df9296c0aa97ff39362bb9",
         }
 }
 
@@ -43,7 +43,7 @@ export function generateTestUsers(numberOfUsers: number, index: number) {
                 users.push({
                         email: `testing${i}@test.com`,
                         password: "Pass12345@",
-                        workflowId: "69cbe2612d6d77a96a84accc"
+                        workflowId: "69df9296c0aa97ff39362bb9"
                 })
         }
         // users.push(...getTestUsers())

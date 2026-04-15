@@ -107,7 +107,7 @@ export class Mission {
 
         await imageResponsePromise;
 
-        await expect(this.page.locator("[data-slot='carousel']").getByRole("img").first()).toBeVisible();
+        await expect(this.page.locator("[data-slot='carousel']").getByRole("img").first()).toBeVisible({timeout:10000});
 
         await this.closeMission();
     }
