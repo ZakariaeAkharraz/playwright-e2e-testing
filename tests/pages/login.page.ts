@@ -21,8 +21,8 @@ export class Login {
     }
 
     async signin(email:string , password: string ) {
+        
         await this.page.locator("input[type='email']").fill(email);
-
         // // password input
         await this.page.locator("input[type='password']").fill(password);
 

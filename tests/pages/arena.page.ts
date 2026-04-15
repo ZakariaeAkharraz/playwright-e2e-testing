@@ -19,17 +19,22 @@ export class Arena {
 
     }
     async openSpecificArena() {
-        await expect(async () => {
-            await this.page.waitForLoadState('networkidle')
-            const arenaLink = await this.page.getByTestId(/^sidebar-nav-child-arenas.*Demo Arena/);
-            await expect(arenaLink).toBeEnabled();
-            await arenaLink.click();
-            // We check if the URL changed to know if the click "took"
-            await expect(this.page).toHaveURL(/Demo.+Arena/, { timeout: 500 });
-        }).toPass({
-            intervals: [500, 1000], // Wait a bit between retries
-            timeout: 10000          // Try for up to 10 seconds total
-        });
+        // await this.page.waitForLoadState('load')
+
+            const arenaLink = await this.page.getByTestId(/^sidebar-nav-child-arenas/).filter({
+                hasText: 'Demo Arena'
+            });
+            const arenaTestId = await arenaLink.getAttribute("data-testid");
+            const arenaId=arenaTestId?.match(/sidebar-nav-child-arenas-([^?]+)/)?.[1];
+
+            const arenaResponsePromise= this.page.waitForResponse(res=>
+                res.url().includes("my?arena_id="+arenaId!)
+            )
+            await expect(arenaLink).toBeVisible().then(async () => {
+                await arenaLink.click();
+            })
+
+            await arenaResponsePromise;
 
         // await this.page.waitForURL(/Demo.Arena/);
 

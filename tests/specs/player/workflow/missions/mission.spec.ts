@@ -53,7 +53,7 @@ test.describe("Mission workflow", {
         test("should be able to download file after mission starts", {}, async ({ page }) => {
 
             const mission = new Mission(page);
-            const missionId = await mission.goto();
+            const missionId = await mission.goto("Upload doc");
             await mission.startMission();
 
             const downloadPromise = page.waitForEvent("download");

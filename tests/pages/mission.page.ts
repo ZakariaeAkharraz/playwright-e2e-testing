@@ -1,4 +1,4 @@
-import { expect, Page } from "@playwright/test";
+import { expect, Locator, Page } from "@playwright/test";
 import { Program } from "./program.page";
 import path from "path";
 
@@ -14,25 +14,48 @@ export class Mission {
         // this.sidebar = page.getByRole('navigation');
     }
 
-    async goto(nthMission = 0) {
+    goto(nthMission: number): Promise<string>;
+    goto(missionName: string): Promise<string>;
 
-        const mission = await this.page.locator("div[data-mission-id]").nth(nthMission);
+    async goto(filter: string | number) {
+
+        let mission: Locator;
+
+        if (typeof filter == "number") {
+            mission = await this.page.locator("div[data-mission-id]").nth(filter);
+        }
+        else {
+            mission = await this.page.locator("div[data-mission-id]", { hasText: filter });
+        }
+
         const mission_id = await mission.getAttribute("data-mission-id");
         await mission.click();
+        await this.page.waitForURL(/stepId/)
+
         return mission_id;
     }
     async startMission() {
+        const startMissionPromise = this.page.waitForResponse(response =>
+            response.url().includes("/start/")
+        )
         await this.page.getByRole('button', { name: 'Démarrer la mission' }).click();
         await this.page.getByRole('button', { name: 'Confirmer' }).click();
         // console.log("waiting for state to be hidden")
         // await expect (this.page.getByRole('dialog').first()).not.toBeVisible();
         // console.log("HIDDEN")
+        await startMissionPromise;
 
     }
 
     async closeMission() {
+        const completeMissionPromise = this.page.waitForResponse(response =>
+            response.url().includes("complete")
+        )
+
         await this.page.getByRole('button', { name: 'Terminer la mission' }).click();
         await this.page.getByRole('button', { name: 'Confirmer' }).click();
+
+        await completeMissionPromise;
         // await this.page.waitForTimeout(3000)
         // await this.page.waitForURL(/.*projects/)
 
@@ -45,9 +68,23 @@ export class Mission {
         await expect(missionCompleted).toHaveText(/[1-9]* coins/i);
 
     }
-    
-    async missionUploadFile() {
-        const missionId = await this.goto(1);
+    async missionDownloadFile(missionName = "Doc to read"){
+        
+            const missionId = await this.goto(missionName);
+            await this.startMission();
+
+            const downloadPromise = this.page.waitForEvent("download");
+
+            // trigger the download action
+            // this selector is temporary
+            await this.page.locator('.inline-flex.cursor-pointer.items-center.justify-center.border.gap-2.whitespace-nowrap.font-medium.transition-all.duration-300.focus-visible\\:outline-none.focus-visible\\:ring-3.focus-visible\\:ring-primary\\/50.disabled\\:pointer-events-none.disabled\\:opacity-40.hover\\:shadow-lg.border-primary.bg-white').click();
+
+            const download = await downloadPromise;
+
+            await this.closeMission();
+    }
+    async missionUploadFile(missionName = "Upload doc") {
+        const missionId = await this.goto(missionName);
         await this.startMission();
         // await generateFile();
         const fileName = "test-file.doc"
@@ -60,12 +97,19 @@ export class Mission {
         // await this.assertMissionComplete(missionId!);
     }
 
-    async missionMediaVisualization(){
-        const missionId = await this.goto(2);
+    async missionMediaVisualization(missionName = "media welcome") {
+        const missionId = await this.goto(missionName);
+        
         await this.startMission();
+        const imageResponsePromise = this.page.waitForResponse(response =>
+            response.url().includes(missionId) && response.status() === 200 && response.request().method()=="GET"
+        );
 
+        await imageResponsePromise;
 
+        await expect(this.page.locator("[data-slot='carousel']").getByRole("img").first()).toBeVisible();
 
+        await this.closeMission();
     }
 
     async uploadFile(filePath: string) {
@@ -84,7 +128,7 @@ export class Mission {
     async addFile() {
         const submitButton = await this.page.getByRole('button', { name: 'Télécharger le document' });
         await submitButton.click();
-        await submitButton.waitFor({state:"hidden"})
+        await submitButton.waitFor({ state: "hidden" })
     }
 
     async uploadUnsupportedFile(filePath: string, page: Page) {
