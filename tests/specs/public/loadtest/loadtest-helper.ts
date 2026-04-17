@@ -30,7 +30,7 @@ import { metrics } from "../../../helpers/metrics";
 
 //     await metrics.measure(page, "user navigate to arena", async () => {
 
-//         await arena.goto();
+//         await arena.gotoProd();
 //         // close Arena tutorial
 //         await page.getByRole('button', { name: 'Close tutorial' }).click();
 //     });
@@ -71,7 +71,7 @@ export async function missionWorkflow(missionInstance: (mission: Mission) => Pro
 
                 // now we're in the dashboard
                 // close dashboard tutorial
-                await arena.goto();
+                await arena.gotoProd();
 
                 // close Arena tutorial
 

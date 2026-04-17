@@ -44,7 +44,7 @@ test("upload doc workflow", async ({ browser }) => {
 
     //             // now we're in the dashboard
     //             // close dashboard tutorial
-    //             await arena.goto();
+    //             await arena.gotoProd();
 
     //             // close Arena tutorial
 

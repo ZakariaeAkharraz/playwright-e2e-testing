@@ -74,7 +74,10 @@ test.describe("Mission workflow", {
     })
 
     test.describe("mission of type video", {}, () => {
-
+        test("should be able to visualize media",async ({page})=>{
+            const mission = new Mission(page)
+            await mission.missionMediaVisualization();
+        })
     })
 
     test.describe("mission of type game", ()=>{

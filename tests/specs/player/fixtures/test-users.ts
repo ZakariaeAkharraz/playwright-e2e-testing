@@ -4,7 +4,7 @@ import fs from 'fs'
 export type User={
         email:string,
         password: string,
-        workflowId: "69df9296c0aa97ff39362bb9"
+        workflowId: "69d7cd95377d23ab7ea30d6a"
 }
 
 export const TEST_USER = {
@@ -17,18 +17,23 @@ export const TEST_USER = {
         department: "Marketing",
         role: "Player"
 }
+export const PROD_USER = {
+        id:"9a5ea9e9-4736-44ca-9352-1e4f07b93abd",
+        email:"user.player3@demo.com",
+        password:"Pass12345@"
+}
 export const QA_USER = {
         id: "f5fbb237-8396-4617-8f8c-62b5c85847c6",
         firstname:"qa",
         lastName:"test1",
         email: "qa.test@tenant.com",
-        password: "motDEpasse@12345",
+        password: "Pass12345@",
         role: "Player",
 
         workflow: {
                 projectName: "qaa Project",
-                id: "69df9296c0aa97ff39362bb9",
-                path: "/projects/69df9296c0aa97ff39362bb9",
+                id: "69d7cd95377d23ab7ea30d6a",
+                path: "/projects/69d7cd95377d23ab7ea30d6a",
         }
 }
 
@@ -41,9 +46,9 @@ export function generateTestUsers(numberOfUsers: number, index: number) {
         for (let i = first; i <= last; i++) {
                 // if(i==7)continue;
                 users.push({
-                        email: `testing${i}@test.com`,
+                        email: `ibtissamghr+${i}@gmail.com`,
                         password: "Pass12345@",
-                        workflowId: "69df9296c0aa97ff39362bb9"
+                        workflowId: "69d7cd95377d23ab7ea30d6a"
                 })
         }
         // users.push(...getTestUsers())

@@ -1,7 +1,7 @@
 import { expect, test as setup } from "@playwright/test"
 import path from "path";
 
-import { QA_USER } from "../player/fixtures/test-users";
+import { PROD_USER, QA_USER } from "../player/fixtures/test-users";
 
 const playerAuthFile = path.join("./playwright/.auth/player.json")
 
@@ -15,13 +15,13 @@ setup("player auth setup", async ({ page, }) => {
         window.localStorage.setItem(`dashboardGuidedTutorial_${userId}` ,JSON.stringify({"currentStepIndex":1,"completed":true}));
         window.localStorage.setItem(`arenaGuidedTutorial_${userId}`,JSON.stringify({"currentStepIndex":1,"completed":true}));
         window.localStorage.setItem(`projectDetailGuidedTutorial_${userId}`,JSON.stringify({"currentStepIndex":1,"completed":true}));
-    },QA_USER.id)
+    },PROD_USER.id)
 
     await page.goto("/fr/sign-in");
     // await page.getByRole('textbox', { name: 'Votre e-mail' }).click();
-    await page.locator("input[type='email']").fill(QA_USER.email);
+    await page.locator("input[type='email']").fill(PROD_USER.email);
     // await page.getByRole('textbox', { name: '••••••••' }).click();
-    await page.locator("input[type='password']").fill(QA_USER.password);
+    await page.locator("input[type='password']").fill(PROD_USER.password);
     await page.locator('button[type="submit"]').click();
 
 

@@ -33,7 +33,7 @@ test("visualize media mission", async ({ browser }) => {
     test.slow();
 
     await missionWorkflow(
-        (mission) => mission.missionMediaVisualization(),
+        (mission) => mission.missionMediaVisualization("Présentation Borj"),
         TEST_USERS,
         browser
     )
@@ -65,7 +65,7 @@ test("visualize media mission", async ({ browser }) => {
 
 //         await metrics.measure(page, "user navigate to arena", async () => {
 
-//             await arena.goto();
+//             await arena.gotoProd();
 //             // close Arena tutorial
 //             await page.getByRole('button', { name: 'Close tutorial' }).click();
 //         });

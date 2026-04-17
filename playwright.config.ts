@@ -63,8 +63,8 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
 
-    { name: 'player', testMatch: /player\.setup\.ts/, use: { baseURL: process.env.DEV_URL_GAMITOOL, } },
-    { name: 'mentor', testMatch: /mentor\.setup\.ts/, use: { baseURL: process.env.DEV_URL_GAMITOOL, } },
+    { name: 'player', testMatch: /player\.setup\.ts/, use: { baseURL: process.env.PROD_URL_GAMITOOL, } },
+    { name: 'mentor', testMatch: /mentor\.setup\.ts/, use: { baseURL: process.env.PROD_URL_GAMITOOL, } },
 
 
 
@@ -73,7 +73,7 @@ export default defineConfig({
       testDir: "./tests/specs/public",
       use: {
         ...devices['Desktop Chrome'],
-        baseURL: process.env.DEV_URL_GAMITOOL,
+        baseURL: process.env.PROD_URL_GAMITOOL,
         trace: 'off'
       },
 
@@ -83,7 +83,7 @@ export default defineConfig({
       testDir: "./tests/specs/player",
       use: {
         ...devices["Desktop Chrome"],
-        baseURL: process.env.DEV_URL_GAMITOOL,
+        baseURL: process.env.PROD_URL_GAMITOOL,
         storageState: 'playwright/.auth/player.json',
 
       },
@@ -94,7 +94,7 @@ export default defineConfig({
       testDir: "./tests/specs/mentor",
       use: {
         ...devices["Desktop Chrome"],
-        baseURL: process.env.DEV_URL_GAMITOOL,
+        baseURL: process.env.PROD_URL_GAMITOOL,
         storageState: 'playwright/.auth/mentor.json',
 
       },
