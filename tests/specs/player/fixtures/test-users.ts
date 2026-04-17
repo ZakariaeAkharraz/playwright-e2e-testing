@@ -26,7 +26,7 @@ export const QA_USER = {
         role: "Player",
 
         workflow: {
-                projectName: "QA Project",
+                projectName: "qaa Project",
                 id: "69df9296c0aa97ff39362bb9",
                 path: "/projects/69df9296c0aa97ff39362bb9",
         }

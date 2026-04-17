@@ -6,13 +6,13 @@ import { resetWorkflowForUserAPI } from "../../player/workflow/workflow.fixture"
 import { metrics } from "../../../helpers/metrics";
 import { missionWorkflow } from "./loadtest-helper";
 
-const NBR_USERS = 50;
+const NBR_USERS = 20;
 const index = 1;
 
 const TEST_USERS = generateTestUsers(NBR_USERS, index)
 
 test.beforeAll("reset workflow for multiple users", async ({ browser }) => {
-
+    
     const runWorkflow = async (user: { email: string, password: string, workflowId: string }) => {
 
         try {

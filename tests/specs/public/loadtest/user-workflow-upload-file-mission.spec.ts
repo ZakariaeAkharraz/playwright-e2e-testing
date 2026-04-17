@@ -1,11 +1,6 @@
-import test, { expect, Page } from "@playwright/test";
+import test from "@playwright/test";
 import { generateTestUsers } from "../../player/fixtures/test-users";
-import { Login } from "../../../pages/login.page";
-import { Program } from "../../../pages/program.page";
-import { Arena } from "../../../pages/arena.page";
-import { Mission } from "../../../pages/mission.page";
-import { resetWorkflowForUser, resetWorkflowForUserAPI } from "../../player/workflow/workflow.fixture";
-import { Dashboard } from "../../../pages/dashboard.page";
+import { resetWorkflowForUserAPI } from "../../player/workflow/workflow.fixture";
 import { metrics } from "../../../helpers/metrics";
 import { missionWorkflow } from "./loadtest-helper";
 
@@ -14,7 +9,7 @@ const index = 1;
 
 const TEST_USERS = generateTestUsers(NBR_USERS, index)
 
-test("multiple users inside one test", async ({ browser }) => {
+test("upload doc workflow", async ({ browser }) => {
     test.setTimeout(300_000)
     test.slow();
     // test.skip();

@@ -18,7 +18,7 @@ test.describe("Mission workflow", {
 
     test.beforeEach(async ({ page }) => {
 
-        await resetWorkflow(QA_USER.workflow.id);
+        await resetWorkflow(QA_USER.workflow.id,page.context());
         
         const program = new Program(page);
         await program.goto(QA_USER.workflow.path);
@@ -75,6 +75,23 @@ test.describe("Mission workflow", {
 
     test.describe("mission of type video", {}, () => {
 
+    })
+
+    test.describe("mission of type game", ()=>{
+
+        test("should be able to start game step,play the game and complete the mission",async ({page})=>{
+            const mission = new Mission(page);
+            await mission.missionGame(QA_USER.workflow.id);
+        })
+    })
+
+    test.describe("mission of type tasks",()=>{
+
+        test("should be able to check tasks and complete mission",async ({page})=>{
+            const mission = new Mission(page);
+            await mission.missionTasks();
+
+        })
     })
 
     // the upload limit is 50 MB, so we're testing with files based on that limit to make sure the validation works as expected

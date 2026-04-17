@@ -3,7 +3,7 @@
 // import { Login } from "../../../pages/login.page";
 // import { Program } from "../../../pages/program.page";
 
-import { Browser, expect } from "@playwright/test";
+import { Browser, expect, request } from "@playwright/test";
 import { User } from "../../player/fixtures/test-users";
 import { Login } from "../../../pages/login.page";
 import { Dashboard } from "../../../pages/dashboard.page";
@@ -93,17 +93,18 @@ export async function missionWorkflow(missionInstance: (mission: Mission) => Pro
             // now we should be in the program page
 
             console.log(`${user.email} in the program page`)
-            await metrics.measure(page, "start and copmlete mission", async () => {
+            await metrics.measure(page, "start and complete mission", async () => {
                 await missionInstance(mission);
 
             })
-
+            console.log(`${user.email} finished the mission`)
 
         } finally {
             // await page.close()
             // await context.close();
         }
     };
+
 
     const results = await Promise.allSettled(TEST_USERS.map(user => runWorkflow(user)))
 

@@ -4,17 +4,17 @@ import { metrics } from "../../../helpers/metrics";
 import { missionWorkflow } from "./loadtest-helper";
 import { generateTestUsers } from "../../player/fixtures/test-users";
 
-const NBR_USERS = 10;
+const NBR_USERS = 20;
 const index = 1;
 
 const TEST_USERS = generateTestUsers(NBR_USERS, index)
 
-test("download doc workflow", async ({ browser }) => {
+test("game workflow", async ({ browser }) => {
     test.setTimeout(300_000)
     test.slow();
     // test.skip();
     await missionWorkflow(
-        (mission) => mission.missionDownloadFile(),
+        (mission) => mission.missionGame(TEST_USERS[0].workflowId),
         TEST_USERS,
         browser
     )

@@ -4,10 +4,18 @@ import fs from "fs";
 import { BrowserContext } from "@playwright/test";
 dotenv.config();
 
-export async function resetWorkflow(workflowId: string) {
-    const auth = JSON.parse(fs.readFileSync("playwright/.auth/player.json", "utf-8"));
-    const token = auth.cookies.find((cookie: any) => cookie.name === "__access_token__")?.value;
-    const context = await request.newContext({
+export async function extractAccessTokenFromCookie(context: BrowserContext) {
+
+    const cookies = await context.cookies();
+    const access_token = cookies.find((cookie: any) => cookie.name === "__access_token__")?.value;
+    return access_token;
+
+}
+export async function resetWorkflow(workflowId: string, context: BrowserContext) {
+
+    // const auth = JSON.parse(fs.readFileSync("playwright/.auth/player.json", "utf-8"));
+    const token = await extractAccessTokenFromCookie(context)
+    const reqContext = await request.newContext({
         baseURL: process.env.BACKEND_URL_DEV,
         extraHTTPHeaders: {
             "x-tenant-name": "ocp",
@@ -17,20 +25,18 @@ export async function resetWorkflow(workflowId: string) {
 
     // console.log(auth.cookies[1].value);
 
-    const reponse = await context.put("/api/core/workflows-progress/reset-workflow-progress/" + workflowId);
+    const reponse = await reqContext.put("/api/core/workflows-progress/reset-workflow-progress/" + workflowId);
 
 
     if (!reponse.ok()) {
         throw new Error("Failed to reset workflow progress, status: " + await reponse.body());
     }
 
-    await context.dispose();
+    await reqContext.dispose();
 }
 
 
 export async function resetWorkflowForUser(workflowId: string, accessToken: string) {
-
-
     const context = await request.newContext({
         baseURL: process.env.BACKEND_URL_DEV,
         extraHTTPHeaders: {
@@ -38,12 +44,7 @@ export async function resetWorkflowForUser(workflowId: string, accessToken: stri
             "Authorization": `Bearer ${accessToken}`
         }
     })
-
-    // console.log(auth.cookies[1].value);
-
     const reponse = await context.put("/api/core/workflows-progress/reset-workflow-progress/" + workflowId);
-
-    // console.log(reponse.body);
 
     if (!reponse.ok()) {
         throw new Error("Failed to reset workflow progress, accesstoken: " + accessToken + ", status: " + await reponse.body());
@@ -52,9 +53,7 @@ export async function resetWorkflowForUser(workflowId: string, accessToken: stri
     await context.dispose();
 }
 
-
-export async function resetWorkflowForUserAPI(email: string, password: string, workflowId: string) {
-
+async function loginApi(email: string, password: string) {
     const context = await request.newContext({
         baseURL: process.env.BACKEND_URL_DEV,
         extraHTTPHeaders: {
@@ -62,18 +61,24 @@ export async function resetWorkflowForUserAPI(email: string, password: string, w
         }
     })
 
-    const response = await context.post("/api/core/auth/login", {
+    return await context.post("/api/core/auth/login", {
         data: {
             email: email,
             password: password,
             remember_me: false
         }
     });
+}
+
+export async function resetWorkflowForUserAPI(email: string, password: string, workflowId: string) {
+
+
+    const response = await loginApi(email, password)
 
     const body = await response.json();
     const access_token = body.data.accessToken;
 
-    await resetWorkflowForUser(workflowId,access_token);
+    await resetWorkflowForUser(workflowId, access_token);
 
 
 
@@ -81,4 +86,23 @@ export async function resetWorkflowForUserAPI(email: string, password: string, w
         throw new Error("Failed to reset workflow progress, accesstoken: " + ", status: " + await response.body());
     }
 
+}
+export async function completeStepApi(context: BrowserContext, workflowId: string, stepId: string, tenantName = "ocp") {
+    const access_token = await extractAccessTokenFromCookie(context);
+    const reqContext = await request.newContext({
+        baseURL: process.env.BACKEND_URL_DEV,
+        extraHTTPHeaders: {
+            "x-tenant-name": tenantName,
+            "Authorization": `Bearer ${access_token}`
+        }
+    })
+    const response = await reqContext.post(`/api/core/workflows-progress/${workflowId}/step/${stepId}/complete`, {
+        data: {
+            "success": true,
+            "score": 85,
+        }
+    })
+    if (!response.ok()) {
+        throw new Error("Failed to failed to complete step, error: " + await response.body());
+    }
 }

@@ -13,14 +13,18 @@ export class Arena {
     async goto() {
         // const dashboard= new Dashboard(this.page);
         // dashboard.goto();
-        // getByTestId('sidebar-nav-child-arenas-19cb7e11-45a1-4a22-ad1e-ed46bc4453a7?arenaName=Demo Arena')
         await this.page.getByTestId(/^sidebar-nav-arenas/).click();
         await this.page.waitForURL(/.*arenas.*/);
 
     }
+    async gotoProd(){
+        await this.page.locator("[data-tutorial='arena']").first().click();
+        await this.page.waitForURL(/.*arenas.*/);
+    }
+
     async openSpecificArena(ArenaName="Qa Arena") {
         // await this.page.waitForLoadState('load')
-
+            if(this.page.getByRole('heading', { name: ArenaName })) return;
             const arenaLink = await this.page.getByTestId(/^sidebar-nav-child-arenas/).filter({
                 hasText: ArenaName
             });

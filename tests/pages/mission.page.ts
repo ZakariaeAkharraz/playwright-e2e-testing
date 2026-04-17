@@ -1,6 +1,7 @@
-import { expect, Locator, Page } from "@playwright/test";
+import { expect, Locator, Page, Response } from "@playwright/test";
 import { Program } from "./program.page";
 import path from "path";
+import { completeStepApi } from "../specs/player/workflow/workflow.fixture";
 
 
 
@@ -39,6 +40,7 @@ export class Mission {
             response.url().includes("/start/")
         )
         await this.page.getByRole('button', { name: 'Démarrer la mission' }).click();
+
         await this.page.getByRole('button', { name: 'Confirmer' }).click();
         // console.log("waiting for state to be hidden")
         // await expect (this.page.getByRole('dialog').first()).not.toBeVisible();
@@ -51,7 +53,7 @@ export class Mission {
         const completeMissionPromise = this.page.waitForResponse(response =>
             response.url().includes("complete")
         )
-
+        await expect(this.page.getByRole('button', { name: 'Terminer la mission' })).toBeEnabled();
         await this.page.getByRole('button', { name: 'Terminer la mission' }).click();
         await this.page.getByRole('button', { name: 'Confirmer' }).click();
 
@@ -68,20 +70,20 @@ export class Mission {
         await expect(missionCompleted).toHaveText(/[1-9]* coins/i);
 
     }
-    async missionDownloadFile(missionName = "Doc to read"){
-        
-            const missionId = await this.goto(missionName);
-            await this.startMission();
+    async missionDownloadFile(missionName = "Doc to read") {
 
-            const downloadPromise = this.page.waitForEvent("download");
+        const missionId = await this.goto(missionName);
+        await this.startMission();
 
-            // trigger the download action
-            // this selector is temporary
-            await this.page.locator('.inline-flex.cursor-pointer.items-center.justify-center.border.gap-2.whitespace-nowrap.font-medium.transition-all.duration-300.focus-visible\\:outline-none.focus-visible\\:ring-3.focus-visible\\:ring-primary\\/50.disabled\\:pointer-events-none.disabled\\:opacity-40.hover\\:shadow-lg.border-primary.bg-white').click();
+        const downloadPromise = this.page.waitForEvent("download");
 
-            const download = await downloadPromise;
+        // trigger the download action
+        // this selector is temporary
+        await this.page.locator('.inline-flex.cursor-pointer.items-center.justify-center.border.gap-2.whitespace-nowrap.font-medium.transition-all.duration-300.focus-visible\\:outline-none.focus-visible\\:ring-3.focus-visible\\:ring-primary\\/50.disabled\\:pointer-events-none.disabled\\:opacity-40.hover\\:shadow-lg.border-primary.bg-white').click();
 
-            await this.closeMission();
+        const download = await downloadPromise;
+
+        await this.closeMission();
     }
     async missionUploadFile(missionName = "Upload doc") {
         const missionId = await this.goto(missionName);
@@ -97,17 +99,66 @@ export class Mission {
         // await this.assertMissionComplete(missionId!);
     }
 
+    async missionGame(workflowId: string, missionName = "step gaming") {
+        const missionId = await this.goto(missionName);
+        await this.startMission();
+
+        const gamePagePromise = this.page.context().waitForEvent("page");
+        await this.page.getByRole('button', { name: 'Jouer au jeu' }).click();
+
+        const gamePage = await gamePagePromise;
+        // console.log(gamePage.url());
+        // await gamePage.waitForTimeout(2000)
+        await completeStepApi(this.page.context(), workflowId, missionId);
+
+        // await this.closeMission();
+    }
+
+    async missionTasks(missionName = "Tasks welcome") {
+        const missionId = await this.goto(missionName);
+        await this.startMission();
+
+        await expect(this.page.getByRole("checkbox").first()).toBeVisible()
+
+        await expect(await this.page.getByRole("checkbox").count()).toBe(2)
+
+        for (let i = 0; i < 2; i++) {
+            const checkbox = await this.page.getByRole("checkbox").nth(i);
+            const checkboxId = await checkbox.getAttribute("id");
+            const responsePromise = this.page.waitForResponse(
+                res => res.url().includes(checkboxId!) && res.status() === 200
+            );
+
+            await checkbox.click();
+
+            const response = await responsePromise;
+
+            
+
+            if (!response.ok()) {
+                throw new Error(
+                    "Failed to reset workflow progress, status: " + await response.text()
+                );
+            }
+            await expect(checkbox).toBeChecked();
+        }
+
+
+        await this.closeMission();
+
+    }
+
     async missionMediaVisualization(missionName = "media welcome") {
         const missionId = await this.goto(missionName);
-        
+
         await this.startMission();
         const imageResponsePromise = this.page.waitForResponse(response =>
-            response.url().includes(missionId) && response.status() === 200 && response.request().method()=="GET"
+            response.url().includes(missionId) && response.status() === 200 && response.request().method() == "GET"
         );
 
         await imageResponsePromise;
 
-        await expect(this.page.locator("[data-slot='carousel']").getByRole("img").first()).toBeVisible({timeout:10000});
+        await expect(this.page.locator("[data-slot='carousel']").getByRole("img").first()).toBeVisible({ timeout: 10000 });
 
         await this.closeMission();
     }
