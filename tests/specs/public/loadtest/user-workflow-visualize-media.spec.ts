@@ -1,12 +1,12 @@
 import test from "@playwright/test";
-import { generateTestUsers } from "../../player/fixtures/test-users";
+import { generateTestUsers } from "../../../helpers/test-users";
 
-import { resetWorkflowForUserAPI } from "../../player/workflow/workflow.fixture";
+import { resetWorkflowForUserAPI } from "../../../helpers/workflow.helper";
 
 import { metrics } from "../../../helpers/metrics";
-import { missionWorkflow } from "./loadtest-helper";
+import { missionWorkflow } from "../../../helpers/loadtest-helper";
 
-const NBR_USERS = 20;
+const NBR_USERS = 100;
 const index = 1;
 
 const TEST_USERS = generateTestUsers(NBR_USERS, index)
@@ -18,7 +18,6 @@ test.beforeAll("reset workflow for multiple users", async ({ browser }) => {
         try {
 
             await resetWorkflowForUserAPI(user.email, user.password, user.workflowId);
-
         } finally {
         }
     };

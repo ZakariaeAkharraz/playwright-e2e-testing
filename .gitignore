@@ -6,7 +6,8 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
-.env
+.env*
 /allure-report/
 /allure-results/
 /prod_data/
+qase.config.json

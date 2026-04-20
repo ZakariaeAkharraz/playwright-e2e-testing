@@ -1,8 +1,10 @@
 import test from "@playwright/test";
-import { resetWorkflowForUserAPI } from "../../player/workflow/workflow.fixture";
+
 import { metrics } from "../../../helpers/metrics";
-import { missionWorkflow } from "./loadtest-helper";
-import { generateTestUsers } from "../../player/fixtures/test-users";
+import { generateTestUsers } from "../../../helpers/test-users";
+import { missionWorkflow } from "../../../helpers/loadtest-helper";
+import { resetWorkflowForUserAPI } from "../../../helpers/workflow.helper";
+
 
 const NBR_USERS = 20;
 const index = 1;

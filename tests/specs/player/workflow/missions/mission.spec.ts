@@ -1,11 +1,11 @@
 import test, { expect } from "@playwright/test";
-import { resetWorkflow } from "../workflow.fixture";
-import { QA_USER } from "../../fixtures/test-users";
+import { resetWorkflow } from "../../../../helpers/workflow.helper.ts";
+import { QA_USER } from "../../../../helpers/test-users";
 
 
 import { Program } from "../../../../pages/program.page";
 import { Mission } from "../../../../pages/mission.page";
-import { test as fileTest } from "../../fixtures/file-fixture"
+import { test as fileTest } from "../../../../fixtures/file-fixture.ts"
 import { qase } from "playwright-qase-reporter"
 
 

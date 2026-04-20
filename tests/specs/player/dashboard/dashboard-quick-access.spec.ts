@@ -1,7 +1,7 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, Page } from "@playwright/test";
 import { Dashboard } from "../../../pages/dashboard.page";
-import { quickAccessMissionsApi } from "./fixtures/missions.handler";
-import { missionComplete, missionExpired, missionInProgress, missionNotStarted, mockMission } from "./fixtures/missions.mock";
+
+import { missionComplete, missionExpired, missionInProgress, missionNotStarted, mockMission } from "../../../helpers/missions.mock";
 
 
 
@@ -94,7 +94,7 @@ test.describe("Quick Access panel functionality", {
     }, async ({ page }) => {
         const dashboard = new Dashboard(page);
 
-        quickAccessMissionsApi(page)
+        // quickAccessMissionsApi(page)
 
         await dashboard.goto();
 
@@ -104,3 +104,7 @@ test.describe("Quick Access panel functionality", {
     })
 
 })
+
+function quickAccessMissionsApi(page: Page, arg1: any[]) {
+    throw new Error("Function not implemented.");
+}

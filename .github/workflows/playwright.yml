@@ -26,8 +26,8 @@ jobs:
       run: npx playwright install chromium
     - name: Run Playwright tests
       env:
-        DEV_URL_GAMITOOL: ${{vars.DEV_URL_GAMITOOL}}
-        BACKEND_URL_DEV: ${{vars.BACKEND_URL_DEV}}
+        DEV_FRONTEND_GAMITOOL: ${{vars.DEV_FRONTEND_GAMITOOL}}
+        BACKEND_GAMITOOL_DEV: ${{vars.BACKEND_GAMITOOL_DEV}}
         
       run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 

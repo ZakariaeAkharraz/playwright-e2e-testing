@@ -1,7 +1,8 @@
 import test, { expect } from "@playwright/test";
 import { Dashboard } from "../../../pages/dashboard.page";
+import { QA_USER } from "../../../helpers/test-users";
 
-import { QA_USER } from "../fixtures/test-users";
+
 
 test.describe("dashboard overview", {
     tag: "@PE-DA",

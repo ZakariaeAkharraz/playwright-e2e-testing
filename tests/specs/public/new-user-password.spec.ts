@@ -1,6 +1,7 @@
 import test, { expect, request } from "@playwright/test";
 import { Login } from "../../pages/login.page";
-import { getTestUsers } from "../player/fixtures/test-users";
+import { getTestUsers } from "../../helpers/test-users";
+
 
 
 
@@ -12,7 +13,7 @@ test("update password", async () => {
     await Promise.allSettled(
         newUsers.map(async (user) => {
             const loginContext = await request.newContext({
-                baseURL: process.env.BACKEND_URL_PROD,
+                baseURL: process.env.BACKEND_GAMITOOL,
                 extraHTTPHeaders: {
                     "x-tenant-name": "demo",
                 }
@@ -31,7 +32,7 @@ test("update password", async () => {
 
 
             const updatePasswordContext = await request.newContext({
-                baseURL: process.env.BACKEND_URL_PROD,
+                baseURL: process.env.BACKEND_GAMITOOL,
                 extraHTTPHeaders: {
                     "x-tenant-name": "demo",
                     "Authorization": `Bearer ${access_token}`

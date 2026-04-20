@@ -16,7 +16,7 @@ export async function resetWorkflow(workflowId: string, context: BrowserContext)
     // const auth = JSON.parse(fs.readFileSync("playwright/.auth/player.json", "utf-8"));
     const token = await extractAccessTokenFromCookie(context)
     const reqContext = await request.newContext({
-        baseURL: process.env.BACKEND_URL_PROD,
+        baseURL: process.env.BACKEND_GAMITOOL,
         extraHTTPHeaders: {
             "x-tenant-name": process.env.PROD_TENANT!,
             "Authorization": `Bearer ${token}`
@@ -38,7 +38,7 @@ export async function resetWorkflow(workflowId: string, context: BrowserContext)
 
 export async function resetWorkflowForUser(workflowId: string, accessToken: string) {
     const context = await request.newContext({
-        baseURL: process.env.BACKEND_URL_PROD,
+        baseURL: process.env.BACKEND_GAMITOOL,
         extraHTTPHeaders: {
             "x-tenant-name": process.env.PROD_TENANT!,
             "Authorization": `Bearer ${accessToken}`
@@ -55,7 +55,7 @@ export async function resetWorkflowForUser(workflowId: string, accessToken: stri
 
 async function loginApi(email: string, password: string) {
     const context = await request.newContext({
-        baseURL: process.env.BACKEND_URL_PROD,
+        baseURL: process.env.BACKEND_GAMITOOL,
         extraHTTPHeaders: {
             "x-tenant-name": process.env.PROD_TENANT!,
         }
@@ -90,7 +90,7 @@ export async function resetWorkflowForUserAPI(email: string, password: string, w
 export async function completeStepApi(context: BrowserContext, workflowId: string, stepId: string) {
     const access_token = await extractAccessTokenFromCookie(context);
     const reqContext = await request.newContext({
-        baseURL: process.env.BACKEND_URL_PROD,
+        baseURL: process.env.BACKEND_GAMITOOL,
         extraHTTPHeaders: {
             "x-tenant-name": process.env.PROD_TENANT!,
             "Authorization": `Bearer ${access_token}`

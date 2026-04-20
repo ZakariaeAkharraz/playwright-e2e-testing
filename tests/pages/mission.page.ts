@@ -1,7 +1,7 @@
 import { expect, Locator, Page, Response } from "@playwright/test";
 import { Program } from "./program.page";
 import path from "path";
-import { completeStepApi } from "../specs/player/workflow/workflow.fixture";
+import { completeStepApi } from "../helpers/workflow.helper";
 
 
 

@@ -1,7 +1,7 @@
 import { expect, test as setup } from "@playwright/test"
 import path from "path";
 
-import { PROD_USER, QA_USER } from "../player/fixtures/test-users";
+import { PROD_USER, QA_USER } from "../../helpers/test-users";
 
 const playerAuthFile = path.join("./playwright/.auth/player.json")
 

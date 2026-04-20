@@ -1,6 +1,6 @@
 import { expect, Page } from "@playwright/test";
 import { Arena } from "./arena.page";
-import { QA_USER } from "../specs/player/fixtures/test-users";
+import { QA_USER } from "../helpers/test-users";
 
 
 export class Program {
@@ -12,7 +12,7 @@ export class Program {
     // this.sidebar = page.getByRole('navigation');
   }
 
-  async goto(path: string) {
+  async goto(path?: string) {
     // const arena = new Arena(this.page);
     // await arena.goto();
 

@@ -1,5 +1,5 @@
 import test, { expect } from "@playwright/test";
-import { Dashboard } from "../../../../pages/dashboard.page";
+import { Dashboard } from "../../../pages/dashboard.page";
 
 
 test.describe("Arena functionality", {

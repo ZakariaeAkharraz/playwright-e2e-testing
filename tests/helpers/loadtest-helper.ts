@@ -4,13 +4,13 @@
 // import { Program } from "../../../pages/program.page";
 
 import { Browser, expect, request } from "@playwright/test";
-import { User } from "../../player/fixtures/test-users";
-import { Login } from "../../../pages/login.page";
-import { Dashboard } from "../../../pages/dashboard.page";
-import { Program } from "../../../pages/program.page";
-import { Arena } from "../../../pages/arena.page";
-import { Mission } from "../../../pages/mission.page";
-import { metrics } from "../../../helpers/metrics";
+import { User } from "./test-users";
+import { Login } from "../pages/login.page";
+import { Dashboard } from "../pages/dashboard.page";
+import { Program } from "../pages/program.page";
+import { Arena } from "../pages/arena.page";
+import { Mission } from "../pages/mission.page";
+import { metrics } from "./metrics";
 
 
 // export async function navigateToMission(page: Page,metrics: any) {

@@ -1,7 +1,7 @@
 import test, { expect } from "@playwright/test";
 import { Dashboard } from "../../../pages/dashboard.page";
-import { missionComplete, missionExpired, missionFactory, missionInProgress, missionNotStarted, missionFailed, missionExpiredEligible, mockMission } from "./fixtures/missions.mock";
-import { quickMissionsApi } from "./fixtures/missions.handler";
+import { missionComplete, missionExpired, missionFactory, missionInProgress, missionNotStarted, missionFailed, missionExpiredEligible, mockMission } from "../../../helpers/missions.mock";
+import { quickMissionsApi } from "../../../helpers/missions.handler";
 
 
 

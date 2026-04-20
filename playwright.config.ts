@@ -1,5 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
-require('dotenv').config({ silent: true });
+const ENV = process.env.NODE_ENV || 'dev';
+require('dotenv').config({ silent: true ,path: `.env.${ENV}`});
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -63,8 +64,8 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
 
-    { name: 'player', testMatch: /player\.setup\.ts/, use: { baseURL: process.env.PROD_URL_GAMITOOL, } },
-    { name: 'mentor', testMatch: /mentor\.setup\.ts/, use: { baseURL: process.env.PROD_URL_GAMITOOL, } },
+    { name: 'player', testMatch: /player\.setup\.ts/, use: { baseURL: process.env.FRONTEND_GAMITOOL, } },
+    { name: 'mentor', testMatch: /mentor\.setup\.ts/, use: { baseURL: process.env.FRONTEND_GAMITOOL, } },
 
 
 
@@ -73,7 +74,7 @@ export default defineConfig({
       testDir: "./tests/specs/public",
       use: {
         ...devices['Desktop Chrome'],
-        baseURL: process.env.PROD_URL_GAMITOOL,
+        baseURL: process.env.FRONTEND_GAMITOOL,
         trace: 'off'
       },
 
@@ -83,7 +84,7 @@ export default defineConfig({
       testDir: "./tests/specs/player",
       use: {
         ...devices["Desktop Chrome"],
-        baseURL: process.env.PROD_URL_GAMITOOL,
+        baseURL: process.env.FRONTEND_GAMITOOL,
         storageState: 'playwright/.auth/player.json',
 
       },
@@ -94,7 +95,7 @@ export default defineConfig({
       testDir: "./tests/specs/mentor",
       use: {
         ...devices["Desktop Chrome"],
-        baseURL: process.env.PROD_URL_GAMITOOL,
+        baseURL: process.env.FRONTEND_GAMITOOL,
         storageState: 'playwright/.auth/mentor.json',
 
       },

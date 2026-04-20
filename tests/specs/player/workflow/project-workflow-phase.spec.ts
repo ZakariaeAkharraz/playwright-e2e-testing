@@ -9,7 +9,7 @@
 
 import test, { expect } from "@playwright/test";
 import { Dashboard } from "../../../pages/dashboard.page";
-import { program } from "../fixtures/test-program";
+import { program } from "../../../helpers/test-program";
 import { Arena } from "../../../pages/arena.page";
 
 test.describe("program phases functionality", {
