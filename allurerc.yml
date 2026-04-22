@@ -1,0 +1,28 @@
+name: Allure Report
+output: ./allure-report
+historyPath: ./history.jsonl
+qualityGate:
+  rules:
+    - maxFailures: 2
+      fastFail: true
+plugins:
+  classic:
+    options:
+      reportName: gamitool
+      singleFile: false
+      reportLanguage: en
+  awesome:
+    options:
+      reportName: gamitool
+      singleFile: false
+      reportLanguage: en
+      open: false
+      publish: true
+  csv:
+    options:
+      fileName: allure-report.csv
+  log:
+    options:
+      groupBy: none
+variables:
+  env_variable: unknown

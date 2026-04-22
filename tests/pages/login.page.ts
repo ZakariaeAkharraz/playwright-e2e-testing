@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test";
 
 
-
+import * as allure from "allure-js-commons"
 
 
 
@@ -11,7 +11,7 @@ export class Login {
     readonly page: Page;
     // readonly sidebar: Locator;
 
-    constructor(page:Page) {
+    constructor(page: Page) {
         this.page = page;
         // this.sidebar = page.getByRole('navigation');
     }
@@ -20,15 +20,18 @@ export class Login {
         await this.page.goto("/fr/sign-in");
     }
 
-    async signin(email:string , password: string ) {
-        
-        await this.page.locator("input[type='email']").fill(email);
-        // // password input
-        await this.page.locator("input[type='password']").fill(password);
 
-        await this.page.locator('button[type="submit"]').click();
+    async signin(email: string, password: string) {
+        allure.step("user login step", async () => {
+            await this.page.locator("input[type='email']").fill(email);
+            // // password input
+            await this.page.locator("input[type='password']").fill(password);
 
-        await this.page.waitForURL(/.*\/dashboard/);
+            await this.page.locator('button[type="submit"]').click();
+
+            await this.page.waitForURL(/.*\/dashboard/);
+        })
+
     }
 
 }

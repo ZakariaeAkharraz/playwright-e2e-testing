@@ -18,7 +18,7 @@ export async function resetWorkflow(workflowId: string, context: BrowserContext)
     const reqContext = await request.newContext({
         baseURL: process.env.BACKEND_GAMITOOL,
         extraHTTPHeaders: {
-            "x-tenant-name": process.env.PROD_TENANT!,
+            "x-tenant-name": process.env.TENANT!,
             "Authorization": `Bearer ${token}`
         }
     })
@@ -40,7 +40,7 @@ export async function resetWorkflowForUser(workflowId: string, accessToken: stri
     const context = await request.newContext({
         baseURL: process.env.BACKEND_GAMITOOL,
         extraHTTPHeaders: {
-            "x-tenant-name": process.env.PROD_TENANT!,
+            "x-tenant-name": process.env.TENANT!,
             "Authorization": `Bearer ${accessToken}`
         }
     })
@@ -57,7 +57,7 @@ async function loginApi(email: string, password: string) {
     const context = await request.newContext({
         baseURL: process.env.BACKEND_GAMITOOL,
         extraHTTPHeaders: {
-            "x-tenant-name": process.env.PROD_TENANT!,
+            "x-tenant-name": process.env.TENANT!,
         }
     })
 
@@ -92,7 +92,7 @@ export async function completeStepApi(context: BrowserContext, workflowId: strin
     const reqContext = await request.newContext({
         baseURL: process.env.BACKEND_GAMITOOL,
         extraHTTPHeaders: {
-            "x-tenant-name": process.env.PROD_TENANT!,
+            "x-tenant-name": process.env.TENANT!,
             "Authorization": `Bearer ${access_token}`
         }
     })

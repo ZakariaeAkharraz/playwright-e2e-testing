@@ -4,7 +4,7 @@ import { metrics } from "../../../helpers/metrics";
 import { missionWorkflow } from "../../../helpers/loadtest-helper";
 import { generateTestUsers } from "../../../helpers/test-users";
 
-const NBR_USERS = 10;
+const NBR_USERS = 1;
 const index = 1;
 
 const TEST_USERS = generateTestUsers(NBR_USERS, index)

@@ -1,15 +1,13 @@
 import test, { expect } from "@playwright/test";
-import { resetWorkflow } from "../../../../helpers/workflow.helper.ts";
+import { resetWorkflow } from "../../../../helpers/workflow.helper";
 import { QA_USER } from "../../../../helpers/test-users";
 
 
 import { Program } from "../../../../pages/program.page";
 import { Mission } from "../../../../pages/mission.page";
-import { test as fileTest } from "../../../../fixtures/file-fixture.ts"
+import { test as fileTest } from "../../../../fixtures/file-fixture"
 import { qase } from "playwright-qase-reporter"
-
-
-
+import * as allure from "allure-js-commons";
 
 test.describe("Mission workflow", {
     tag: "@PE-MI"
@@ -23,10 +21,10 @@ test.describe("Mission workflow", {
         const program = new Program(page);
         await program.goto(QA_USER.workflow.path);
     })
-
+    
     test("should go to the mission details page on click", async ({ page }) => {
 
-
+        
         const mission_card = await page.locator("div[data-mission-id]").first();
         const mission_id = await mission_card.getAttribute("data-mission-id");
         await mission_card.click();
@@ -109,6 +107,7 @@ test.describe("Mission workflow", {
             await page.waitForTimeout(3000)
         })
 
+        
         fileTest("should be able to upload file, add file description and complete the mission", {}, async ({ page, generateFile }) => {
 
             const mission = new Mission(page);
@@ -137,8 +136,8 @@ test.describe("Mission workflow", {
         })
 
 
-        fileTest(qase(2,"should not to upload file larger than the file size limit"), {}, async ({ page, generateFile }) => {
-
+        fileTest("should not to upload file larger than the file size limit", {}, async ({ page, generateFile }) => {
+            
 
             const mission = new Mission(page);
             const filePath = generateFile("big-test-file.docx", 20);
@@ -150,7 +149,7 @@ test.describe("Mission workflow", {
             await expect(page.locator(".toast-error").first()).toBeVisible();
         })
 
-        fileTest(qase(5,"should not allow to upload file without adding description"), {}, async ({ page, generateFile }) => {
+        fileTest("should not allow to upload file without adding description", {}, async ({ page, generateFile }) => {
 
             const mission = new Mission(page);
             const filePath = generateFile("test-file.docx", 10);
@@ -160,7 +159,7 @@ test.describe("Mission workflow", {
             // await mission.page.
         })
 
-        fileTest(qase(6,"should not allow to upload unsupported file type"), {}, async ({ page, generateFile }) => {
+        fileTest("should not allow to upload unsupported file type", {}, async ({ page, generateFile }) => {
             // supported file types are : .doc, .docx, .pdf
 
             const mission = new Mission(page);
