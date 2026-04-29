@@ -1,0 +1,15 @@
+apiVersion: opentestfactory.org/v1alpha1
+kind: Hook
+metadata:
+  name: playwright-pre-install
+events:
+  category: execute
+  # This tells the hook to watch for the exact action Squash TM generates
+  on:
+    - playwright/execute@v1
+    - playwright/execute@v2
+before:
+  # The steps here run right after the code is downloaded, but before the test executes
+  - run: npm install
+  # Add any other setup commands you need here, for example:
+  # - run: npx playwright install --with-deps
