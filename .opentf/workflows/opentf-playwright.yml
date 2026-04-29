@@ -1,0 +1,19 @@
+metadata:
+  name: learn-opentf-orchestrator
+jobs:
+  automated-test:
+    runs-on: [linux, playwright]
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        repository: https://github.com/ZakariaeAkharraz/playwright-e2e-testing
+    - name: Install dependencies
+      run: npm ci
+    - name: Install Playwright Browsers
+      run: npx playwright install chromium
+    - name: Run Playwright tests
+      env:
+        DEV_FRONTEND_GAMITOOL: ${{ env.DEV_FRONTEND_GAMITOOL }}
+        BACKEND_GAMITOOL_DEV: ${{ env.BACKEND_GAMITOOL_DEV }}
+    - run: ls -l
