@@ -15,6 +15,7 @@ export async function resetWorkflow(workflowId: string, context: BrowserContext)
 
     // const auth = JSON.parse(fs.readFileSync("playwright/.auth/player.json", "utf-8"));
     const token = await extractAccessTokenFromCookie(context)
+    console.log("token: "+token)
     const reqContext = await request.newContext({
         baseURL: process.env.BACKEND_GAMITOOL,
         extraHTTPHeaders: {
