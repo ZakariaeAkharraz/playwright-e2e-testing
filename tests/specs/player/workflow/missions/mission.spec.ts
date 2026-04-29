@@ -10,21 +10,21 @@ import { qase } from "playwright-qase-reporter"
 import * as allure from "allure-js-commons";
 
 test.describe("Mission workflow", {
-    tag: "@PE-MI"
+    // tag: "@PE-MI"
 }, () => {
 
 
     test.beforeEach(async ({ page }) => {
 
-        await resetWorkflow(QA_USER.workflow.id,page.context());
-        
+        await resetWorkflow(QA_USER.workflow.id, page.context());
+
         const program = new Program(page);
         await program.goto(QA_USER.workflow.path);
     })
-    
+
     test("should go to the mission details page on click", async ({ page }) => {
 
-        
+
         const mission_card = await page.locator("div[data-mission-id]").first();
         const mission_id = await mission_card.getAttribute("data-mission-id");
         await mission_card.click();
@@ -39,16 +39,9 @@ test.describe("Mission workflow", {
 
     test.describe("mission of type 'doc to read'", {}, () => {
 
-        test("download should not be allowed before starting the mission", {}, async ({ page }) => {
-
-            const mission = new Mission(page);
-            await mission.goto(0);
-            await page.waitForTimeout(1000);
-            await expect(page.locator('.inline-flex.cursor-pointer.items-center.justify-center.border.gap-2.whitespace-nowrap.font-medium.transition-all.duration-300.focus-visible\\:outline-none.focus-visible\\:ring-3.focus-visible\\:ring-primary\\/50.disabled\\:pointer-events-none.disabled\\:opacity-40.hover\\:shadow-lg.border-primary.bg-white')).not.toBeVisible();
-
-
-        })
-        test("should be able to download file after mission starts", {}, async ({ page }) => {
+        test("should be able to download file after mission starts", {
+            tag: "@PE-MI-DR-01",
+        }, async ({ page }) => {
 
             const mission = new Mission(page);
             const missionId = await mission.goto("Upload doc");
@@ -67,28 +60,40 @@ test.describe("Mission workflow", {
             await mission.assertMissionComplete(missionId!);
 
         })
+        test("download should not be allowed before starting the mission", {
+            tag: "@PE-MI-DR-02"
+        }, async ({ page }) => {
+
+            const mission = new Mission(page);
+            await mission.goto(0);
+            await page.waitForTimeout(1000);
+            await expect(page.locator('.inline-flex.cursor-pointer.items-center.justify-center.border.gap-2.whitespace-nowrap.font-medium.transition-all.duration-300.focus-visible\\:outline-none.focus-visible\\:ring-3.focus-visible\\:ring-primary\\/50.disabled\\:pointer-events-none.disabled\\:opacity-40.hover\\:shadow-lg.border-primary.bg-white')).not.toBeVisible();
+
+
+        })
+
 
 
     })
 
     test.describe("mission of type video", {}, () => {
-        test("should be able to visualize media",async ({page})=>{
+        test("should be able to visualize media", async ({ page }) => {
             const mission = new Mission(page)
             await mission.missionMediaVisualization();
         })
     })
 
-    test.describe("mission of type game", ()=>{
+    test.describe("mission of type game", () => {
 
-        test("should be able to start game step,play the game and complete the mission",async ({page})=>{
+        test("should be able to start game step,play the game and complete the mission", async ({ page }) => {
             const mission = new Mission(page);
             await mission.missionGame(QA_USER.workflow.id);
         })
     })
 
-    test.describe("mission of type tasks",()=>{
+    test.describe("mission of type tasks", () => {
 
-        test("should be able to check tasks and complete mission",async ({page})=>{
+        test("should be able to check tasks and complete mission", async ({ page }) => {
             const mission = new Mission(page);
             await mission.missionTasks();
 
@@ -96,8 +101,10 @@ test.describe("Mission workflow", {
     })
 
     // the upload limit is 50 MB, so we're testing with files based on that limit to make sure the validation works as expected
-    test.describe.configure({mode: "serial"});
-    test.describe("mission of type 'upload document'", {}, () => {
+    test.describe.configure({ mode: "serial" });
+    test.describe("mission of type 'upload document'", {
+        // tag: "@PE-MI-UD"
+    }, () => {
 
         test.beforeEach(async ({ page }) => {
 
@@ -107,8 +114,10 @@ test.describe("Mission workflow", {
             await page.waitForTimeout(3000)
         })
 
-        
-        fileTest("should be able to upload file, add file description and complete the mission", {}, async ({ page, generateFile }) => {
+
+        fileTest("@PE-MI-UD-01 should be able to upload file, add file description and complete the mission", {
+            tag: "@PE-MI-UD-01"
+        }, async ({ page, generateFile }) => {
 
             const mission = new Mission(page);
 
@@ -116,14 +125,14 @@ test.describe("Mission workflow", {
 
             // const missionId = await mission.goto(1);
             // await mission.startMission();
-            const fileName="test-file.docx";
-            const filePath =  generateFile(fileName, 10);
+            const fileName = "test-file.docx";
+            const filePath = generateFile(fileName, 13);
 
             // upload file
 
             await mission.uploadFile(filePath);
 
-            await mission.fillDescription("file description",fileName);
+            await mission.fillDescription("file description", fileName);
 
             await mission.addFile();
 
@@ -136,8 +145,10 @@ test.describe("Mission workflow", {
         })
 
 
-        fileTest("should not to upload file larger than the file size limit", {}, async ({ page, generateFile }) => {
-            
+        fileTest("should not to upload file larger than the file size limit", {
+            tag: "@PE-MI-UD-02"
+        }, async ({ page, generateFile }) => {
+
 
             const mission = new Mission(page);
             const filePath = generateFile("big-test-file.docx", 20);
@@ -149,7 +160,9 @@ test.describe("Mission workflow", {
             await expect(page.locator(".toast-error").first()).toBeVisible();
         })
 
-        fileTest("should not allow to upload file without adding description", {}, async ({ page, generateFile }) => {
+        fileTest("should not allow to upload file without adding description", {
+            tag: "@PE-MI-UD-03"
+        }, async ({ page, generateFile }) => {
 
             const mission = new Mission(page);
             const filePath = generateFile("test-file.docx", 10);
@@ -159,7 +172,9 @@ test.describe("Mission workflow", {
             // await mission.page.
         })
 
-        fileTest("should not allow to upload unsupported file type", {}, async ({ page, generateFile }) => {
+        fileTest("should not allow to upload unsupported file type", {
+            tag: "@PE-MI-UD-04"
+        }, async ({ page, generateFile }) => {
             // supported file types are : .doc, .docx, .pdf
 
             const mission = new Mission(page);
@@ -174,10 +189,12 @@ test.describe("Mission workflow", {
 
         })
 
-        test.describe("mission of type 'check Tasks'", {}, () => {
 
 
-        })
+    })
+
+    test.describe("mission of type 'check Tasks'", {}, () => {
+
 
     })
 

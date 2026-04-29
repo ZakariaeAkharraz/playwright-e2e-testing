@@ -1,0 +1,55 @@
+<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="1" time="40.61234700000001">
+<testsuite name="specs\auth-setup\player.setup.ts" timestamp="2026-04-24T15:23:17.368Z" hostname="player" tests="1" failures="0" skipped="0" time="5.674" errors="0">
+<testcase name="player auth setup" classname="specs\auth-setup\player.setup.ts" time="5.674">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\specs-auth-setup-player.setup.ts-player-auth-setup-player\trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="specs\player\workflow\missions\mission.spec.ts" timestamp="2026-04-24T15:23:17.368Z" hostname="player auth" tests="1" failures="0" skipped="0" time="30.931" errors="1">
+<testcase name="Mission workflow › mission of type &apos;upload document&apos; › @PE-MI-UD-01 should be able to upload file, add file description and complete the mission" classname="specs\player\workflow\missions\mission.spec.ts" time="30.931">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\workflow-missions-mission--343a7-on-and-complete-the-mission-player-auth\error-context.md]]
+
+[[ATTACHMENT|..\test-results\workflow-missions-mission--343a7-on-and-complete-the-mission-player-auth\trace.zip]]
+]]>
+</system-out>
+<error message="Test timeout of 30000ms exceeded." type="Error">
+<![CDATA[  [player auth] › specs\player\workflow\missions\mission.spec.ts:113:17 › Mission workflow › mission of type 'upload document' › @PE-MI-UD-01 should be able to upload file, add file description and complete the mission 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('textbox', { name: 'test-file.docx' })
+
+
+       at pages\mission.page.ts:181
+
+      179 |
+      180 |     async fillDescription(description: string, fileName: string) {
+    > 181 |         await this.page.getByRole('textbox', { name: fileName }).fill(description);
+          |                                                                  ^
+      182 |     }
+      183 |
+      184 |     async addFile() {
+        at Mission.fillDescription (D:\Testing\playwright-e2e-testing\tests\pages\mission.page.ts:181:66)
+        at D:\Testing\playwright-e2e-testing\tests\specs\player\workflow\missions\mission.spec.ts:130:27
+
+    Error Context: ..\test-results\workflow-missions-mission--343a7-on-and-complete-the-mission-player-auth\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\workflow-missions-mission--343a7-on-and-complete-the-mission-player-auth\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\workflow-missions-mission--343a7-on-and-complete-the-mission-player-auth\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</error>
+</testcase>
+</testsuite>
+</testsuites>
