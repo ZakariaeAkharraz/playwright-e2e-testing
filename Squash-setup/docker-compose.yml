@@ -1,0 +1,87 @@
+services:
+  squashtm-pg:
+    container_name: squashtm-pg
+    environment:
+      POSTGRES_DB: E2ETestManagement
+      POSTGRES_USER: QaUser
+      POSTGRES_PASSWORD: Pass12345@
+    image: postgres:17
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  squashtm:
+    container_name: squashtm
+    image: squashtest/squash:latest
+    depends_on:
+      - squashtm-pg
+    environment:
+      SQUASH_REST_API_JWT_SECRET: Ym9uam91cmplcwLnBxRldmVsb3BwZXVzZX42cnNxdWFzaHRtZXRub3Vzc29tbWVzZW5sYW5uZWUyMDI0ISEhIS
+      SPRING_PROFILES_ACTIVE: postgresql
+      SPRING_DATASOURCE_URL: jdbc:postgresql://squashtm-pg:5432/E2ETestManagement
+      SPRING_DATASOURCE_USERNAME: QaUser
+      SPRING_DATASOURCE_PASSWORD: Pass12345@
+      SQUASH_TM_PUBLIC_URL: http://squashtm:8080/squash
+    ports:
+      - 8090:8080
+    volumes:
+      - squashtm-logs:/opt/squash-tm/logs
+      - squashtm-plugins:/opt/squash-tm/plugins
+
+  orchestrator:
+    container_name: squash-orchestrator
+    image: squashtest/squash-orchestrator:6.2
+    environment:
+    # - OPENTF_DEFAULT_CHANNEL=agentchannel
+    - DEBUG_LEVEL=DEBUG
+    restart: always
+    depends_on:
+      - squashtm
+    volumes:
+      # The public key the orchestrator uses to validate incoming tokens
+      - type: bind
+        source: ./keys/trusted_key.pub
+        target: /etc/squashtf/trusted_key.pub
+      # No license file needed for Community edition — omit it entirely
+    ports:
+      - "7774:7774"   # receptionist  — Squash TM sends execution requests here
+      - "7775:7775"   # observer       — Squash TM polls job status here
+      - "7776:7776"   # killswitch     — Squash TM sends stop requests here
+      - "7796:7796"   # insightcollector
+      - "38368:38368" # eventbus       — Squash TM subscribes to events here
+      - "34537:34537" # localstore     — internal report storage
+      - "24368:24368" # agentchannel   — agents connect/poll here
+      - "12312:12312" # qualitygate    — optional, CI/CD quality checks
+    
+  agent:
+    container_name: opentf-agent
+    build:
+      context: .
+      dockerfile: Dockerfile.agent
+    depends_on:
+      - orchestrator
+    volumes:
+      - agent-workspace:/workspace
+    environment:
+      - OPENTF_AGENT_TOKEN=$OPENTF_AGENT_TOKEN
+      - FRONTEND_GAMITOOL=${FRONTEND_GAMITOOL}
+      - BACKEND_GAMITOOL=${BACKEND_GAMITOOL}
+      - TENANT=${TENANT}
+    # working_dir: /workspace
+    command: >
+      opentf-agent
+      --name "Qa agent"
+      --tags playwright,linux
+      --host http://orchestrator
+      --port 24368
+      --debug
+      --token $OPENTF_AGENT_TOKEN
+      --workspace_dir /workspace
+    
+
+volumes:
+  pgdata:
+  squashtm-logs:
+  squashtm-plugins:
+  agent-workspace:
