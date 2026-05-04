@@ -15,7 +15,6 @@ test.describe("Mission workflow", {
 
 
     test.beforeEach(async ({ page }) => {
-        await page.waitForTimeout(10000)
         await resetWorkflow(QA_USER.workflow.id, page.context());
 
         const program = new Program(page);

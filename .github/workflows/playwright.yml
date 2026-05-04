@@ -24,7 +24,7 @@ jobs:
         BACKEND_GAMITOOL: ${{ vars.BACKEND_GAMITOOL }}
         TENANT: ${{vars.TENANT}}
         SQUASH_QA_TOKEN: ${{secrets.SQUASH_QA_TOKEN}}
-      run: npx playwright test tests/specs/player/workflow/mission
+      run: npx playwright test tests/specs/player/workflow/missions
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
