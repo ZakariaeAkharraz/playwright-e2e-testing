@@ -19,7 +19,7 @@ export async function resetWorkflow(workflowId: string, context: BrowserContext)
     const reqContext = await request.newContext({
         baseURL: process.env.BACKEND_GAMITOOL,
         extraHTTPHeaders: {
-            "x-tenant-name": process.env.TENANT!,
+            "X-Tenant-Name": process.env.TENANT!,
             "Authorization": `Bearer ${token}`
         }
     })
@@ -30,6 +30,7 @@ export async function resetWorkflow(workflowId: string, context: BrowserContext)
 
 
     if (!reponse.ok()) {
+        
         throw new Error("Failed to reset workflow progress, status: " + await reponse.body());
     }
 
