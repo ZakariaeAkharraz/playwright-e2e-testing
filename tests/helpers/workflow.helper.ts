@@ -35,7 +35,12 @@ export async function resetWorkflow(workflowId: string, context: BrowserContext)
 
 
     if (!reponse.ok()) {
-
+        console.error('FAILED CALL:', {
+                url: reponse.url(),
+                status: reponse.status(),
+                sentHeaders: reponse.headers(),
+                errorBody: await reponse.text()
+            });
         throw new Error("Failed to reset workflow progress, status: " + await reponse.body());
     }
 
