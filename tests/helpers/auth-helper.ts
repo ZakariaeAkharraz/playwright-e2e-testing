@@ -13,7 +13,7 @@ export async function loginSetup(page: Page,) {
         window.localStorage.setItem(`projectDetailGuidedTutorial_${userId}`, JSON.stringify({ "currentStepIndex": 1, "completed": true }));
     }, QA_USER.id)
 
-    await page.goto("/fr/sign-in");
+    await page.goto(process.env.FRONTEND_GAMITOOL+"/fr/sign-in");
     // await page.getByRole('textbox', { name: 'Votre e-mail' }).click();
     await page.locator("input[type='email']").fill(QA_USER.email);
     // await page.getByRole('textbox', { name: '••••••••' }).click();
