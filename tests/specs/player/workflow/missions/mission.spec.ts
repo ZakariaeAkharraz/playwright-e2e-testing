@@ -48,7 +48,7 @@ test.describe("Mission workflow", {
         }, async ({ page }) => {
 
             const mission = new Mission(page);
-            const missionId = await mission.goto("Upload doc");
+            const missionId = await mission.goto("doc to read");
             await mission.startMission();
 
             const downloadPromise = page.waitForEvent("download");
