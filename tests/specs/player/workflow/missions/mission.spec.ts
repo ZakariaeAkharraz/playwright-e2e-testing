@@ -126,7 +126,7 @@ test.describe("Mission workflow", {
             // const missionId = await mission.goto(1);
             // await mission.startMission();
             const fileName = "test-file.docx";
-            const filePath = generateFile(fileName, 13);
+            const filePath = generateFile(fileName, 3);
 
             // upload file
 

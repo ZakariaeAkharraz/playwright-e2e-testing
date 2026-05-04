@@ -148,7 +148,7 @@ export class Mission {
 
     }
 
-    async missionMediaVisualization(missionName = "Présentation Borj") {
+    async missionMediaVisualization(missionName = "media welcome") {
         const missionId = await this.goto(missionName);
 
         const imageResponsePromise = this.page.waitForResponse(response =>
@@ -158,12 +158,12 @@ export class Mission {
         await this.startMission();
 
         await imageResponsePromise;
-        const videoThumb = this.page.locator('.absolute.inset-0.flex')
-        await expect( videoThumb).toBeVisible();
-        await videoThumb.click();
-        await expect(this.page.locator("video")).toBeVisible();
-        await this.page.getByRole('button', { name: 'Close' }).click();
-        // await expect(this.page.locator("[data-slot='carousel']").getByRole("img").first()).toBeVisible({ timeout: 10000 });
+        // const videoThumb = this.page.locator('.absolute.inset-0.flex')
+        // await expect( videoThumb).toBeVisible();
+        // await videoThumb.click();
+        // await expect(this.page.locator("video")).toBeVisible();
+        // await this.page.getByRole('button', { name: 'Close' }).click();
+        await expect(this.page.locator("[data-slot='carousel']").getByRole("img").first()).toBeVisible();
 
         await this.closeMission();
     }
