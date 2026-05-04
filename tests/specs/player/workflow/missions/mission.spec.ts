@@ -41,7 +41,7 @@ test.describe("Mission workflow", {
         test("should be able to download file after mission starts", {
             tag: "@PE-MI-DR-01",
         }, async ({ page }) => {
-            
+
             const mission = new Mission(page);
             const missionId = await mission.goto("doc to read");
             await mission.startMission();
@@ -100,11 +100,12 @@ test.describe("Mission workflow", {
     })
 
     // the upload limit is 50 MB, so we're testing with files based on that limit to make sure the validation works as expected
-    test.describe.configure({ mode: "serial" });
+
     test.describe("mission of type 'upload document'", {
+
         // tag: "@PE-MI-UD"
     }, () => {
-
+        test.describe.configure({ mode: "serial" });
         test.beforeEach(async ({ page }) => {
 
             const mission = new Mission(page);
