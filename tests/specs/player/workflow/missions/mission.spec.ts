@@ -42,7 +42,7 @@ test.describe("Mission workflow", {
         test("should be able to download file after mission starts", {
             tag: "@PE-MI-DR-01",
         }, async ({ page }) => {
-
+            
             const mission = new Mission(page);
             const missionId = await mission.goto("Upload doc");
             await mission.startMission();
