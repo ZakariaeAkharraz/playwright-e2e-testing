@@ -37,6 +37,7 @@ test.describe("Mission workflow", {
     })
 
     test.describe("mission of type 'doc to read'", {}, () => {
+        test.describe.configure({ mode: "serial" });
 
         test("should be able to download file after mission starts", {
             tag: "@PE-MI-DR-01",
@@ -179,7 +180,7 @@ test.describe("Mission workflow", {
 
             const mission = new Mission(page);
 
-            const filePath = generateFile("unsupported-type.docx", 10);
+            const filePath = generateFile("unsupported-type.txt", 10);
 
             // upload file
 
