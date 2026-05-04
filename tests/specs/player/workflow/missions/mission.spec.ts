@@ -16,14 +16,14 @@ test.describe("Mission workflow", {
 
 
     test.beforeEach(async ({ page }) => {
-        if (process.env.FROM_SQUASH !== undefined) {
+        if(process.env.FROM_SQUASH!==undefined){
             await loginSetup(page);
         }
-
+        
         await resetWorkflow(QA_USER.workflow.id, page.context());
 
         const program = new Program(page);
-        await program.goto(process.env.FRONTEND_GAMITOOL + QA_USER.workflow.path);
+        await program.goto(QA_USER.workflow.path);
     })
 
     test("should go to the mission details page on click", async ({ page }) => {

@@ -25,7 +25,7 @@ export const QA_USER = {
         workflow: {
                 projectName: "qaa Project",
                 id: "69df9296c0aa97ff39362bb9",
-                path: "/projects/69df9296c0aa97ff39362bb9",
+                path: process.env.FRONTEND_GAMITOOL+"/projects/69df9296c0aa97ff39362bb9",
         }
 }
 
