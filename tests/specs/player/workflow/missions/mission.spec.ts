@@ -8,6 +8,7 @@ import { Mission } from "../../../../pages/mission.page";
 import { test as fileTest } from "../../../../fixtures/file-fixture"
 import { qase } from "playwright-qase-reporter"
 import * as allure from "allure-js-commons";
+import { loginSetup } from "../../../../helpers/auth-helper";
 
 test.describe("Mission workflow", {
     // tag: "@PE-MI"
@@ -20,6 +21,10 @@ test.describe("Mission workflow", {
 
         const program = new Program(page);
         await program.goto(QA_USER.workflow.path);
+
+        if(process.env.FROM_SQUASH!==undefined){
+            await loginSetup(page);
+        }
     })
 
     test("should go to the mission details page on click", async ({ page }) => {
