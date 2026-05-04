@@ -15,7 +15,7 @@ export async function resetWorkflow(workflowId: string, context: BrowserContext)
 
     // const auth = JSON.parse(fs.readFileSync("playwright/.auth/player.json", "utf-8"));
     const token = await extractAccessTokenFromCookie(context)
-    console.log("tenant name: "+process.env.TENANT)
+    console.log("tenant name: " + process.env.TENANT)
     const reqContext = await request.newContext({
         baseURL: process.env.BACKEND_GAMITOOL,
         extraHTTPHeaders: {
@@ -28,9 +28,17 @@ export async function resetWorkflow(workflowId: string, context: BrowserContext)
 
     const reponse = await reqContext.put("/api/core/workflows-progress/reset-workflow-progress/" + workflowId);
 
+    // Log request details
+    console.log('Request Headers:', reponse.headers());
+    console.log('Request URL:', reponse.url());
+
+    // Log reponse details
+    console.log('Status:', reponse.status());
+    const body = await reponse.json();
+    console.log('Response Body:', body);
 
     if (!reponse.ok()) {
-        
+
         throw new Error("Failed to reset workflow progress, status: " + await reponse.body());
     }
 
