@@ -1,7 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 const ENV = process.env.NODE_ENV || 'dev';
 
-require('dotenv').config({ silent: true, path: `.env.${ENV}` });
+require('dotenv').config({ quiet: true, path: `.env.${ENV}` });
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
