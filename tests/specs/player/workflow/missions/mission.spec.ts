@@ -6,7 +6,6 @@ import { QA_USER } from "../../../../helpers/test-users";
 import { Program } from "../../../../pages/program.page";
 import { Mission } from "../../../../pages/mission.page";
 import { test as fileTest } from "../../../../fixtures/file-fixture"
-import { qase } from "playwright-qase-reporter"
 import * as allure from "allure-js-commons";
 import { loginSetup } from "../../../../helpers/auth-helper";
 
@@ -41,7 +40,10 @@ test.describe("Mission workflow", {
 
     })
 
-    test.describe("mission of type 'doc to read'", {}, () => {
+    test.describe("mission of type 'doc to read'", {
+        tag:"@PE-MI-DR"
+    }, () => {
+        test.describe.configure({ mode: "serial" });
 
         test("should be able to download file after mission starts", {
             tag: "@PE-MI-DR-01",
@@ -80,24 +82,36 @@ test.describe("Mission workflow", {
 
     })
 
-    test.describe("mission of type video", {}, () => {
-        test("should be able to visualize media", async ({ page }) => {
+    test.describe("mission of type media", {
+        tag:"@PE-MI-ME"
+    }, () => {
+        test("should be able to visualize media",{
+            tag:"@PE-MI-ME-01"
+        }, async ({ page }) => {
             const mission = new Mission(page)
             await mission.missionMediaVisualization();
         })
     })
 
-    test.describe("mission of type game", () => {
+    test.describe("mission of type game",{
+        tag:"@PE-MI-GM"
+    }, () => {
 
-        test("should be able to start game step,play the game and complete the mission", async ({ page }) => {
+        test("should be able to start game step,play the game and complete the mission",{
+            tag:"@PE-MI-GM-01"
+        }, async ({ page }) => {
             const mission = new Mission(page);
             await mission.missionGame(QA_USER.workflow.id);
         })
     })
 
-    test.describe("mission of type tasks", () => {
+    test.describe("mission of type tasks",{
+        tag:"@PE-MI-TA"
+    }, () => {
 
-        test("should be able to check tasks and complete mission", async ({ page }) => {
+        test("should be able to check tasks and complete mission",{
+            tag:"@PE-MI-TA-01"
+        }, async ({ page }) => {
             const mission = new Mission(page);
             await mission.missionTasks();
 
@@ -105,11 +119,12 @@ test.describe("Mission workflow", {
     })
 
     // the upload limit is 50 MB, so we're testing with files based on that limit to make sure the validation works as expected
-    test.describe.configure({ mode: "serial" });
-    test.describe("mission of type 'upload document'", {
-        // tag: "@PE-MI-UD"
-    }, () => {
 
+    test.describe("mission of type 'upload document'", {
+
+        tag: "@PE-MI-UD"
+    }, () => {
+        test.describe.configure({ mode: "serial" });
         test.beforeEach(async ({ page }) => {
 
             const mission = new Mission(page);
@@ -119,7 +134,7 @@ test.describe("Mission workflow", {
         })
 
 
-        fileTest("@PE-MI-UD-01 should be able to upload file, add file description and complete the mission", {
+        fileTest("should be able to upload file, add file description and complete the mission", {
             tag: "@PE-MI-UD-01"
         }, async ({ page, generateFile }) => {
 
@@ -130,7 +145,7 @@ test.describe("Mission workflow", {
             // const missionId = await mission.goto(1);
             // await mission.startMission();
             const fileName = "test-file.docx";
-            const filePath = generateFile(fileName, 13);
+            const filePath = generateFile(fileName, 3);
 
             // upload file
 
@@ -183,7 +198,7 @@ test.describe("Mission workflow", {
 
             const mission = new Mission(page);
 
-            const filePath = generateFile("unsupported-type.docx", 10);
+            const filePath = generateFile("unsupported-type.txt", 10);
 
             // upload file
 
@@ -194,15 +209,6 @@ test.describe("Mission workflow", {
         })
 
 
-
-    })
-
-    test.describe("mission of type 'check Tasks'", {}, () => {
-
-
-    })
-
-    test.describe("mission should be blocked in case of secquential missions", {}, () => {
 
     })
 })

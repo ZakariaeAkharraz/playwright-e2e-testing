@@ -5,7 +5,9 @@ import { PROD_USER, QA_USER } from "../../helpers/test-users";
 
 const playerAuthFile = path.join("./playwright/.auth/player.json")
 
-setup("player auth setup", async ({ page, }) => {
+setup("player auth setup",{
+    tag:"@player-setup"
+}, async ({ page, }) => {
 
     
 

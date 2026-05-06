@@ -15,10 +15,11 @@ export async function resetWorkflow(workflowId: string, context: BrowserContext)
 
     // const auth = JSON.parse(fs.readFileSync("playwright/.auth/player.json", "utf-8"));
     const token = await extractAccessTokenFromCookie(context)
+
     const reqContext = await request.newContext({
         baseURL: process.env.BACKEND_GAMITOOL,
         extraHTTPHeaders: {
-            "x-tenant-name": process.env.TENANT!,
+            "X-Tenant-Name": process.env.TENANT!,
             "Authorization": `Bearer ${token}`
         }
     })
@@ -29,6 +30,12 @@ export async function resetWorkflow(workflowId: string, context: BrowserContext)
 
 
     if (!reponse.ok()) {
+        console.error('FAILED CALL:', {
+                url: reponse.url(),
+                status: reponse.status(),
+                sentHeaders: reponse.headers(),
+                errorBody: await reponse.text()
+            });
         throw new Error("Failed to reset workflow progress, status: " + await reponse.body());
     }
 

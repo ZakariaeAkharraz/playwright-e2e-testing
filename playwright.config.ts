@@ -1,7 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 const ENV = process.env.NODE_ENV || 'dev';
 
-require('dotenv').config({ silent: true, path: `.env.${ENV}` });
+require('dotenv').config({ quiet: true, path: `.env.${ENV}` });
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -30,7 +30,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 2 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['./tests/helpers/squash-reporter.ts'], ['junit', { outputFile: 'results/results.xml' }]],
+  reporter: process.env.CI ? [['html', { outputFile: 'results/results.xml' }]] : './tests/helpers/squash-reporter.ts',
   // reporter: process.env.CI ? 'blob' : [['html'], ['allure-playwright'], ['list'],['./tests/helpers/squash-reporter.ts']],
   // reporter:'list',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */

@@ -11,7 +11,7 @@ class SquashReporter implements Reporter {
 
     async onTestEnd(test: TestCase, result: TestResult) {
         console.log("in the reporter")
-        const automationKey = test.tags.find(tag => tag.startsWith("@PE-"))
+        const automationKey = test.tags.findLast(tag => tag.startsWith("@PE-"))
         if (!automationKey) {
             console.warn(`⚠️ Skipping Squash update: No 'PE-' tag found for test: ${test.title}`);
             return;
