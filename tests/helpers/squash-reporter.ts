@@ -6,7 +6,7 @@ dotenv.config();
 class SquashReporter implements Reporter {
 
     private baseUrl = process.env.SQUASH_API;
-    private iterationId = 4; // Replace with your actual ID from Step 1
+    private iterationId = 7; // Replace with your actual ID from Step
     
 
     async onTestEnd(test: TestCase, result: TestResult) {

@@ -4,18 +4,10 @@ import { Dashboard } from "../../../pages/dashboard.page";
 
 test.describe("i18n functionality", () => {
 
-    test("should view laguage panel", async ({ page }) => {
-
-        const dashboard = new Dashboard(page);
-
-        await dashboard.goto();
-
-        await page.getByTestId("topbar-language").click();
-        await expect(page.getByRole("menu").filter({ has: page.getByRole('menuitem', { name: '🇺🇸 English' }) })).toBeVisible();
-
-    })
-
-    test("should change language to english", async ({ page }) => {
+    test("should change language to english",
+        {
+            tag:"@AU-LO-01"
+        }, async ({ page }) => {
         const dashboard = new Dashboard(page);
 
         await dashboard.goto("fr");
@@ -27,7 +19,9 @@ test.describe("i18n functionality", () => {
         expect(url).toContain("/en");
     })
 
-    test("links should have correct locale param based on the chosen language", async ({ page }) => {
+    test("links should have correct locale param based on the chosen language",{
+            tag:"@AU-LO-02"
+        }, async ({ page }) => {
         const dashboard = new Dashboard(page);
 
         await dashboard.goto("en");

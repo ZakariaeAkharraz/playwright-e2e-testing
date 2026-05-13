@@ -1,13 +1,13 @@
 // import { Page } from "@playwright/test";
 // import { Arena } from "../../../pages/arena.page";
 // import { Login } from "../../../pages/login.page";
-// import { Program } from "../../../pages/program.page";
+
 
 import { Browser, expect, request } from "@playwright/test";
 import { User } from "./test-users";
 import { Login } from "../pages/login.page";
 import { Dashboard } from "../pages/dashboard.page";
-import { Program } from "../pages/program.page";
+import { Project } from "../pages/project.page";
 import { Arena } from "../pages/arena.page";
 import { Mission } from "../pages/mission.page";
 import { metrics } from "./metrics";
@@ -16,7 +16,7 @@ import { metrics } from "./metrics";
 // export async function navigateToMission(page: Page,metrics: any) {
 //     const login = new Login(page);
 
-//     const program = new Program(page);
+//     const project = new Project(page);
 //     const arena = new Arena(page);
 
 //     await metrics.measure(page, "user login to dashboard", async () => {
@@ -34,11 +34,11 @@ import { metrics } from "./metrics";
 //         // close Arena tutorial
 //         await page.getByRole('button', { name: 'Close tutorial' }).click();
 //     });
-//     // now we should be in the program page
+//     // now we should be in the project page
 
-//     await metrics.measure(page, "user navigate to program", async () => {
-//         await program.gotoProgram();
-//         // close Program tutorial
+//     await metrics.measure(page, "user navigate to project", async () => {
+//         await project.gotoProject();
+//         // close project tutorial
 //         await page.getByRole('button', { name: 'Close tutorial' }).click();
 //     });
 // }
@@ -53,7 +53,7 @@ export async function missionWorkflow(missionInstance: (mission: Mission) => Pro
         try {
             const login = new Login(page);
             const dashboard = new Dashboard(page);
-            const program = new Program(page);
+            const project = new Project(page);
             const arena = new Arena(page);
             const mission = new Mission(page);
 
@@ -85,14 +85,14 @@ export async function missionWorkflow(missionInstance: (mission: Mission) => Pro
 
 
 
-            await metrics.measure(page, "user navigate to program", async () => {
-                await program.gotoProgram();
-                // close Program tutorial
+            await metrics.measure(page, "user navigate to project", async () => {
+                await project.gotoProject();
+                // close project tutorial
                 await page.getByRole('button', { name: 'Close tutorial' }).click();
             });
-            // now we should be in the program page
+            // now we should be in the project page
 
-            console.log(`${user.email} in the program page`)
+            console.log(`${user.email} in the project page`)
             await metrics.measure(page, "start and complete mission", async () => {
                 await missionInstance(mission);
 

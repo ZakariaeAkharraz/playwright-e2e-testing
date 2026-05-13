@@ -11,3 +11,4 @@ node_modules/
 /allure-results/
 /prod_data/
 qase.config.json
+/results

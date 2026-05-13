@@ -2,7 +2,9 @@ import { request } from "@playwright/test";
 import dotenv from 'dotenv';
 import fs from "fs";
 import { BrowserContext } from "@playwright/test";
+import { QA_USER } from "./test-users";
 dotenv.config();
+
 
 export async function extractAccessTokenFromCookie(context: BrowserContext) {
 
@@ -12,34 +14,10 @@ export async function extractAccessTokenFromCookie(context: BrowserContext) {
 
 }
 export async function resetWorkflow(workflowId: string, context: BrowserContext) {
-
-    // const auth = JSON.parse(fs.readFileSync("playwright/.auth/player.json", "utf-8"));
     const token = await extractAccessTokenFromCookie(context)
 
-    const reqContext = await request.newContext({
-        baseURL: process.env.BACKEND_GAMITOOL,
-        extraHTTPHeaders: {
-            "X-Tenant-Name": process.env.TENANT!,
-            "Authorization": `Bearer ${token}`
-        }
-    })
+    await resetWorkflowForUser(workflowId, token!);
 
-    // console.log(auth.cookies[1].value);
-
-    const reponse = await reqContext.put("/api/core/workflows-progress/reset-workflow-progress/" + workflowId);
-
-
-    if (!reponse.ok()) {
-        console.error('FAILED CALL:', {
-                url: reponse.url(),
-                status: reponse.status(),
-                sentHeaders: reponse.headers(),
-                errorBody: await reponse.text()
-            });
-        throw new Error("Failed to reset workflow progress, status: " + await reponse.body());
-    }
-
-    await reqContext.dispose();
 }
 
 
@@ -94,15 +72,32 @@ export async function resetWorkflowForUserAPI(email: string, password: string, w
     }
 
 }
-export async function completeStepApi(context: BrowserContext, workflowId: string, stepId: string) {
-    const access_token = await extractAccessTokenFromCookie(context);
-    const reqContext = await request.newContext({
-        baseURL: process.env.BACKEND_GAMITOOL,
-        extraHTTPHeaders: {
-            "x-tenant-name": process.env.TENANT!,
-            "Authorization": `Bearer ${access_token}`
+export async function startAndCompleteStepApi(context: BrowserContext, workflowId: string, stepId: string) {
+    const reqContext = await prepareReqContext(context);
+    let response = await reqContext.put(`/api/core/workflows-progress/${workflowId}/start/${stepId}`)
+
+    if (!response.ok()) {
+        throw new Error("Failed to failed to complete step, error: " + await response.body());
+    }
+
+    response = await reqContext.post(`/api/core/workflows-progress/${workflowId}/step/${stepId}/complete`, {
+        data: {
+            "success": true,
+            "score": 85,
         }
     })
+
+    if (!response.ok()) {
+        throw new Error("Failed to failed to complete step, error: " + await response.body());
+    }
+
+}
+
+
+
+export async function completeStepApi(context: BrowserContext, workflowId: string, stepId: string) {
+
+    const reqContext = await prepareReqContext(context)
     const response = await reqContext.post(`/api/core/workflows-progress/${workflowId}/step/${stepId}/complete`, {
         data: {
             "success": true,
@@ -112,4 +107,39 @@ export async function completeStepApi(context: BrowserContext, workflowId: strin
     if (!response.ok()) {
         throw new Error("Failed to failed to complete step, error: " + await response.body());
     }
+}
+
+async function prepareReqContext(context: BrowserContext, token?: string) {
+    const access_token = token !== undefined ? token : await extractAccessTokenFromCookie(context);
+    return await request.newContext({
+        baseURL: process.env.BACKEND_GAMITOOL,
+        extraHTTPHeaders: {
+            "x-tenant-name": process.env.TENANT!,
+            "Authorization": `Bearer ${access_token}`
+        }
+    })
+}
+
+export async function updateUsername(username = QA_USER.username, context: BrowserContext) {
+    const reqContext = await prepareReqContext(context);
+    reqContext.post("/api/core/profiles/" + QA_USER.profileId, {
+        data: {
+            "username": username
+        }
+    })
+}
+
+export async function updatePassword(newPassword: string, currentPassword: string, context: BrowserContext) {
+    const response = await loginApi(QA_USER.email, currentPassword)
+    const body = await response.json();
+    const access_token = body.data.accessToken;
+
+    const reqContext = await prepareReqContext(context, access_token);
+    reqContext.post("/api/core/auth/change-password", {
+        data: {
+            currentPassword: currentPassword,
+            newPassword: newPassword
+        }
+    })
+    
 }

@@ -1,9 +1,8 @@
 import { expect, Page } from "@playwright/test";
-import { Arena } from "./arena.page";
-import { QA_USER } from "../helpers/test-users";
+import { Arena } from "../helpers/test-project";
 
 
-export class Program {
+export class Project {
   readonly page: Page;
   // readonly sidebar: Locator;
 
@@ -16,17 +15,17 @@ export class Program {
     // const arena = new Arena(this.page);
     // await arena.goto();
 
-    // await this.page.locator("div[data-tutorial='project-cards']").nth(nthProgram).click();
-    await this.page.goto(QA_USER.workflow.path);
+    // await this.page.locator("div[data-tutorial='project-cards']").nth(nthProject).click();
+    await this.page.goto(Arena.project.path);
 
 
   }
 
-  async gotoProgram() {
+  async gotoProject() {
     await this.page.locator("div[data-tutorial='project-cards']").first().click();
   }
 
-  async assertProgramExist(){
+  async assertProjectExist(){
     await expect(this.page.locator("div[data-tutorial='project-cards']").first()).toBeVisible();
   }
 }

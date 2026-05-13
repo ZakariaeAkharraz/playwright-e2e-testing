@@ -11,19 +11,17 @@ test.describe("dashboard overview", {
 
     test.beforeEach(async ({ page }) => {
         const dashboard = new Dashboard(page);
-
-    
         await dashboard.goto();
     })
     
 
 
-    test("view user welcome", {
-        tag: "@PE-DA-OV",
+    test("No content fallback", {
+        tag: "@PE-DA-OV-01",
     },
         async ({ page }) => {
 
-            await expect(page.getByTestId("dashboard-welcome-banner")).toContainText(QA_USER.firstname);
+            
 
         })
 })

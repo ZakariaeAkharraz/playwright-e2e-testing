@@ -58,9 +58,8 @@ export class Dashboard {
     await this.page.locator("div[data-tutorial='notifications']").click();
   }
   
-  async assertNotificationExist(){
-     expect(await this.page.getByTestId("notification-item").count()).toBeGreaterThan(0);
-  }
+  
+  
   async closeNotification(){
     await this.page.keyboard.press("Escape")
   }

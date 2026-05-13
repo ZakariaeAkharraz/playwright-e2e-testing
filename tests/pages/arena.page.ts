@@ -43,7 +43,7 @@ export class Arena {
 
     }
 
-    async addFirstProgramToFavorite() {
+    async addFirstProjectToFavorite() {
 
         const favoriteButton = await this.page.locator("button[data-tutorial='favorite-button']").first();
         if (await favoriteButton.locator("img[src*='heart-favorite-fill']").count() == 0)
@@ -51,7 +51,7 @@ export class Arena {
 
     }
 
-    async removeProgramFromFavorite() {
+    async removeProjectFromFavorite() {
         const favoriteButton = await this.page.locator("button[data-tutorial='favorite-button']").first();
         if (await favoriteButton.locator("img[src*='heart-favorite-fill']").count() > 0) {
             console.log("favorite")
@@ -59,7 +59,7 @@ export class Arena {
         }
 
     }
-    // async expectProgramTitle(){
+    // async expectProjectTitle(){
 
     // }
 }

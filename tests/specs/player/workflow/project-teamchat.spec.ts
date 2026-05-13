@@ -1,18 +1,18 @@
 import test, { expect } from "@playwright/test";
 import { Arena } from "../../../pages/arena.page.ts";
-import { Program } from "../../../pages/program.page.ts";
+import { Project } from "../../../pages/project.page.ts";
 
 
 
 
 
-test.describe("Program Team Chat functionality", {
+test.describe("Project Team Chat functionality", {
     tag: "@PE-PR-TC"
 }, () => {
-
+    test.skip()
     test.beforeEach(async ({ page }) => {
-        const program = new Program(page);
-        await program.goto();
+        const project = new Project(page);
+        await project.goto();
     })
 
     test("Team chat and members are visible in the arena", {

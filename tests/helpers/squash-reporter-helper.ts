@@ -6,9 +6,6 @@
  */
 
 import dotenv from 'dotenv';
-import fs from 'fs';
-import path from 'path';
-import FormData from 'form-data';
 dotenv.config();
 
 type TestResult = {
@@ -34,7 +31,7 @@ export async function sendResultsToSquash(
   };
 
   try {
-    console.log("token: ", process.env.SQUASH_QA_TOKEN)
+    // console.log("token: ", process.env.SQUASH_QA_TOKEN)
     const response = await fetch(url, {
       method: 'POST',
       headers: {

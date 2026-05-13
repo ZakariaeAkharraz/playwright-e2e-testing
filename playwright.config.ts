@@ -40,7 +40,7 @@ export default defineConfig({
     // video: 'retain-on-failure',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     // headless: process.env.CI ? true : false,
-    trace: 'off',
+    trace: 'retain-on-failure',
     bypassCSP: true,
   },
 

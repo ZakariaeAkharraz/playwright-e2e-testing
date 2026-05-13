@@ -22,7 +22,7 @@ export class Login {
 
 
     async signin(email: string, password: string) {
-        allure.step("user login step", async () => {
+        // allure.step("user login step", async () => {
             await this.page.locator("input[type='email']").fill(email);
             // // password input
             await this.page.locator("input[type='password']").fill(password);
@@ -30,7 +30,7 @@ export class Login {
             await this.page.locator('button[type="submit"]').click();
 
             await this.page.waitForURL(/.*\/dashboard/);
-        })
+        // })
 
     }
 

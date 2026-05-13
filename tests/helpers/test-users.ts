@@ -1,5 +1,6 @@
 import path from "path";
 import fs from 'fs'
+import { Arena } from "./test-project";
 
 export type User={
         email:string,
@@ -16,17 +17,15 @@ export const PROD_USER = {
 }
 export const QA_USER = {
         id: "f5fbb237-8396-4617-8f8c-62b5c85847c6",
+        profileId:"95a7d573-08d9-47c2-99ad-aa4d2ce88879",
+        username:"Qa User",
         firstname:"qa",
-        lastName:"test1",
+        lastName:"test",
         email: "qa.test@tenant.com",
         password: "motDEpasse@12345",
         role: "Player",
-
-        workflow: {
-                projectName: "qaa Project",
-                id: "69df9296c0aa97ff39362bb9",
-                path: process.env.FRONTEND_GAMITOOL+"/projects/69df9296c0aa97ff39362bb9",
-        }
+        arena:Arena,
+        
 }
 
 
@@ -40,7 +39,7 @@ export function generateTestUsers(numberOfUsers: number, index: number) {
                 users.push({
                         email: `testing${i}@test.com`,
                         password: "Pass12345@",
-                        workflowId: QA_USER.workflow.id
+                        workflowId: Arena.project.workflowId
                 })
         }
         // users.push(...getTestUsers())

@@ -49,7 +49,7 @@ test("visualize media mission", async ({ browser }) => {
 
 //         const login = new Login(page);
 //         const dashboard = new Dashboard(page);
-//         const program = new Program(page);
+//         const project = new Project(page);
 //         const arena = new Arena(page);
 //         const mission = new Mission(page);
 
@@ -68,11 +68,11 @@ test("visualize media mission", async ({ browser }) => {
 //             // close Arena tutorial
 //             await page.getByRole('button', { name: 'Close tutorial' }).click();
 //         });
-//         // now we should be in the program page
+//         // now we should be in the project page
 
-//         await metrics.measure(page, "user navigate to program", async () => {
-//             await program.gotoProgram();
-//             // close Program tutorial
+//         await metrics.measure(page, "user navigate to project", async () => {
+//             await project.gotoProject();
+//             // close project tutorial
 //             await page.getByRole('button', { name: 'Close tutorial' }).click();
 //         });
 

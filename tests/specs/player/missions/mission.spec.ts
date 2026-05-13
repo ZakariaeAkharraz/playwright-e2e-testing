@@ -1,14 +1,12 @@
 import test, { expect } from "@playwright/test";
-import { resetWorkflow } from "../../../../helpers/workflow.helper";
-import { QA_USER } from "../../../../helpers/test-users";
+import { resetWorkflow } from "../../../helpers/workflow.helper";
+import { QA_USER } from "../../../helpers/test-users";
+import { Project } from "../../../pages/project.page";
+import { Mission } from "../../../pages/mission.page";
+import { test as fileTest } from "../../../fixtures/file-fixture"
 
-
-import { Program } from "../../../../pages/program.page";
-import { Mission } from "../../../../pages/mission.page";
-import { test as fileTest } from "../../../../fixtures/file-fixture"
-import * as allure from "allure-js-commons";
-import { loginSetup } from "../../../../helpers/auth-helper";
-
+import { loginSetup } from "../../../helpers/auth-helper";
+import {Arena} from "../../../helpers/test-project"
 test.describe("Mission workflow", {
     // tag: "@PE-MI"
 }, () => {
@@ -19,13 +17,13 @@ test.describe("Mission workflow", {
             await loginSetup(page);
         }
         
-        await resetWorkflow(QA_USER.workflow.id, page.context());
+        await resetWorkflow(Arena.project.workflowId, page.context());
 
-        const program = new Program(page);
-        await program.goto(QA_USER.workflow.path);
+        const project = new Project(page);
+        await project.goto(Arena.project.path);
     })
 
-    test("should go to the mission details page on click", async ({ page }) => {
+    test("user should be able to navigate to the mission details page on click", async ({ page }) => {
 
 
         const mission_card = await page.locator("div[data-mission-id]").first();
@@ -33,10 +31,6 @@ test.describe("Mission workflow", {
         await mission_card.click();
 
         await expect(page).toHaveURL(new RegExp(".*stepId=" + mission_id))
-
-    })
-
-    test("reset workfork API should reset the workflow progress", async () => {
 
     })
 
@@ -101,7 +95,7 @@ test.describe("Mission workflow", {
             tag:"@PE-MI-GM-01"
         }, async ({ page }) => {
             const mission = new Mission(page);
-            await mission.missionGame(QA_USER.workflow.id);
+            await mission.missionGame(Arena.project.workflowId,Arena.project.phase[0].steps.GAME.name);
         })
     })
 
@@ -113,7 +107,7 @@ test.describe("Mission workflow", {
             tag:"@PE-MI-TA-01"
         }, async ({ page }) => {
             const mission = new Mission(page);
-            await mission.missionTasks();
+            await mission.missionTasks(Arena.project.phase[0].steps.TASKS);
 
         })
     })
