@@ -10,9 +10,6 @@ require('dotenv').config({ quiet: true, path: `.env.${ENV}` });
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
 
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
 
 export default defineConfig({
   // expect: {
@@ -20,7 +17,9 @@ export default defineConfig({
   // },
   // timeout: 100_000,
   testDir: './tests',
-
+  testIgnore: process.env.CI
+  ? "**/loadtest/**"
+  : undefined, 
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
