@@ -14,12 +14,21 @@ export async function extractAccessTokenFromCookie(context: BrowserContext) {
 
 }
 export async function resetWorkflow(workflowId: string, context: BrowserContext) {
-    const token = await extractAccessTokenFromCookie(context)
+    // const token = await extractAccessTokenFromCookie(context)
 
-    await resetWorkflowForUser(workflowId, token!);
+    // await resetWorkflowForUser(workflowId, token!);
+
+    const reqContext = await prepareReqContext(context);
+    const reponse = await reqContext.put("/api/core/workflows-progress/reset-workflow-progress/" + workflowId);
+
+    if (!reponse.ok()) {
+        throw new Error("Failed to reset workflow progress, status: " + await reponse.body());
+    }
+
+    await reqContext.dispose();
+
 
 }
-
 
 export async function resetWorkflowForUser(workflowId: string, accessToken: string) {
     const context = await request.newContext({
@@ -38,7 +47,7 @@ export async function resetWorkflowForUser(workflowId: string, accessToken: stri
     await context.dispose();
 }
 
-async function loginApi(email: string, password: string) {
+export async function loginApi(email: string, password: string) {
     const context = await request.newContext({
         baseURL: process.env.BACKEND_GAMITOOL,
         extraHTTPHeaders: {
@@ -57,20 +66,31 @@ async function loginApi(email: string, password: string) {
 
 export async function resetWorkflowForUserAPI(email: string, password: string, workflowId: string) {
 
+    const loginResponse = await loginApi(email, password)
 
-    const response = await loginApi(email, password)
-
-    const body = await response.json();
+    const body = await loginResponse.json();
     const access_token = body.data.accessToken;
 
-    await resetWorkflowForUser(workflowId, access_token);
+    const context = await request.newContext({
+        baseURL: process.env.BACKEND_GAMITOOL,
+        extraHTTPHeaders: {
+            "x-tenant-name": process.env.TENANT!,
+            "Authorization": `Bearer ${access_token}`
+        }
+    })
+    const resetWorkflowResponse = await context.put("/api/core/workflows-progress/reset-workflow-progress/" + workflowId);
 
+    // await resetWorkflowForUser(workflowId, access_token);
 
-
-    if (!response.ok()) {
-        throw new Error("Failed to reset workflow progress, accesstoken: " + ", status: " + await response.body());
+    if (!resetWorkflowResponse.ok()) {
+        throw new Error("Failed to reset workflow progress, status: " + await resetWorkflowResponse.body());
     }
 
+    if (!loginResponse.ok()) {
+        throw new Error("Failed to reset workflow progress, status: " + await loginResponse.body());
+    }
+
+    await context.dispose();
 }
 export async function startAndCompleteStepApi(context: BrowserContext, workflowId: string, stepId: string) {
     const reqContext = await prepareReqContext(context);
@@ -120,26 +140,26 @@ async function prepareReqContext(context: BrowserContext, token?: string) {
     })
 }
 
-export async function updateUsername(username = QA_USER.username, context: BrowserContext) {
+export async function updateUsername(profileId: string, username: string, context: BrowserContext) {
     const reqContext = await prepareReqContext(context);
-    reqContext.post("/api/core/profiles/" + QA_USER.profileId, {
+    await reqContext.patch("/api/core/profiles/" + profileId, {
         data: {
             "username": username
         }
     })
 }
 
-export async function updatePassword(newPassword: string, currentPassword: string, context: BrowserContext) {
-    const response = await loginApi(QA_USER.email, currentPassword)
+export async function updatePassword(email: string, newPassword: string, currentPassword: string, context: BrowserContext) {
+    const response = await loginApi(email, currentPassword)
     const body = await response.json();
     const access_token = body.data.accessToken;
 
     const reqContext = await prepareReqContext(context, access_token);
-    reqContext.post("/api/core/auth/change-password", {
+    await reqContext.post("/api/core/auth/change-password", {
         data: {
             currentPassword: currentPassword,
             newPassword: newPassword
         }
     })
-    
+
 }

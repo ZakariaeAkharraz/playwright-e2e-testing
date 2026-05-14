@@ -11,7 +11,28 @@ export const project = [{
         "workflow-phase-4"]
 },]
 
-export const Arena = {
+export type Arena = {
+    name: string,
+    project: {
+        name: string,
+        workflowId: string,
+        path: string,
+        phase: [
+            {
+                name: string,
+                steps: {
+                    DOCUMENTS_TO_READ: { name: string, id: string },
+                    UPLOAD_DOCUMENTS: string,
+                    TASKS: string,
+                    MEDIA: string,
+                    GAME: { name: string, id: string }
+                }
+            }
+            ,]
+
+    }
+}
+export const arena: Arena = {
     name: "Qa Arena",
     project: {
         name: "qaa Project",
@@ -25,7 +46,7 @@ export const Arena = {
                     UPLOAD_DOCUMENTS: "Upload doc",
                     TASKS: "Tasks welcome",
                     MEDIA: "media welcome",
-                    GAME: {name:"step gaming",id:"step_1776257573164_njovs69c"}
+                    GAME: { name: "step gaming", id: "step_1776257573164_njovs69c" }
                 }
             }
         ]

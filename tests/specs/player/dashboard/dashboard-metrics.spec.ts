@@ -1,8 +1,8 @@
 import test, { expect } from "@playwright/test";
 import { Dashboard } from "../../../pages/dashboard.page";
-import { completeStepApi, resetWorkflow, startAndCompleteStepApi } from "../../../helpers/workflow.helper";
+import { resetWorkflow, startAndCompleteStepApi } from "../../../helpers/workflow.helper";
 import { QA_USER } from "../../../helpers/test-users";
-import { Arena } from "../../../helpers/test-project";
+import { arena } from "../../../helpers/test-project";
 
 
 
@@ -58,7 +58,7 @@ test.describe("dashboard metrics", {
     }, async ({ page }) => {
         // 0 reset workflow
 
-        await resetWorkflow(Arena.project.workflowId,page.context())
+        await resetWorkflow(arena.project.workflowId,page.context())
         
         // 1 get the current value of the xp
 
@@ -69,7 +69,7 @@ test.describe("dashboard metrics", {
         console.log("current Xp: ",currentXP);
 
         // 2 complete a mission
-        await startAndCompleteStepApi(page.context(), Arena.project.workflowId, Arena.project.phase[0].steps.GAME.id);
+        await startAndCompleteStepApi(page.context(), arena.project.workflowId, arena.project.phase[0].steps.GAME.id);
 
         await page.reload()
         await page.waitForLoadState()

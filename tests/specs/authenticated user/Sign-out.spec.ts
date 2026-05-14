@@ -1,9 +1,10 @@
-import test, { expect } from "@playwright/test";
+import  { expect } from "@playwright/test";
 import { Dashboard } from "../../pages/dashboard.page";
+import { test } from "../../fixtures/parallel-workers-fixture";
 
 test("user should be able to sign-out",{
     tag:"@AU-SO-01"
-}, async ({ page, request }) => {
+}, async ({ page }) => {
     const dashboard = new Dashboard(page)
 
     await dashboard.goto();

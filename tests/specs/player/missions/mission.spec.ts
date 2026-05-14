@@ -6,21 +6,22 @@ import { Mission } from "../../../pages/mission.page";
 import { test as fileTest } from "../../../fixtures/file-fixture"
 
 import { loginSetup } from "../../../helpers/auth-helper";
-import {Arena} from "../../../helpers/test-project"
+import {arena} from "../../../helpers/test-project"
 test.describe("Mission workflow", {
     // tag: "@PE-MI"
 }, () => {
 
+    test.describe.configure({ mode: "serial" });
 
     test.beforeEach(async ({ page }) => {
         if(process.env.FROM_SQUASH!==undefined){
             await loginSetup(page);
         }
         
-        await resetWorkflow(Arena.project.workflowId, page.context());
+        await resetWorkflow(arena.project.workflowId, page.context());
 
         const project = new Project(page);
-        await project.goto(Arena.project.path);
+        await project.goto(arena.project.path);
     })
 
     test("user should be able to navigate to the mission details page on click", async ({ page }) => {
@@ -95,7 +96,7 @@ test.describe("Mission workflow", {
             tag:"@PE-MI-GM-01"
         }, async ({ page }) => {
             const mission = new Mission(page);
-            await mission.missionGame(Arena.project.workflowId,Arena.project.phase[0].steps.GAME.name);
+            await mission.missionGame(arena.project.workflowId,arena.project.phase[0].steps.GAME.name);
         })
     })
 
@@ -107,7 +108,7 @@ test.describe("Mission workflow", {
             tag:"@PE-MI-TA-01"
         }, async ({ page }) => {
             const mission = new Mission(page);
-            await mission.missionTasks(Arena.project.phase[0].steps.TASKS);
+            await mission.missionTasks(arena.project.phase[0].steps.TASKS);
 
         })
     })

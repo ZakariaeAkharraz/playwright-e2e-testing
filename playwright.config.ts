@@ -27,7 +27,7 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 2 : undefined,
+  workers: process.env.CI ? 2 : 2,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: process.env.CI ? [['html', { outputFile: 'results/results.xml' }]] : './tests/helpers/squash-reporter.ts',
   // reporter: process.env.CI ? 'blob' : [['html'], ['allure-playwright'], ['list'],['./tests/helpers/squash-reporter.ts']],
@@ -35,7 +35,6 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
     // video: 'retain-on-failure',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     // headless: process.env.CI ? true : false,
@@ -65,6 +64,7 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
 
+    // { name: 'auth-user', testMatch: /auth-user\.setup\.ts/, use: { baseURL: process.env.FRONTEND_GAMITOOL,},workers:2 },
     { name: 'player', testMatch: /player\.setup\.ts/, use: { baseURL: process.env.FRONTEND_GAMITOOL, } },
     { name: 'mentor', testMatch: /mentor\.setup\.ts/, use: { baseURL: process.env.FRONTEND_GAMITOOL, } },
 
@@ -79,6 +79,19 @@ export default defineConfig({
         trace: 'off'
       },
 
+    },
+    {
+      name: "auth-user",
+      testDir: "./tests/specs/authenticated user",
+      fullyParallel:false,
+      use: {
+        ...devices["Desktop Chrome"],
+        baseURL: process.env.FRONTEND_GAMITOOL,
+        storageState: 'playwright/.auth/player.json',
+
+      },
+      dependencies: ['player'],
+      workers:2
     },
     {
       name: "player auth",

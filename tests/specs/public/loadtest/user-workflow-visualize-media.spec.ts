@@ -1,5 +1,5 @@
 import test from "@playwright/test";
-import { generateTestUsers } from "../../../helpers/test-users";
+import { generateTestUsers, User } from "../../../helpers/test-users";
 
 import { resetWorkflowForUserAPI } from "../../../helpers/workflow.helper";
 
@@ -13,11 +13,11 @@ const TEST_USERS = generateTestUsers(NBR_USERS, index)
 
 test.beforeAll("reset workflow for multiple users", async ({ browser }) => {
     
-    const runWorkflow = async (user: { email: string, password: string, workflowId: string }) => {
+    const runWorkflow = async (user: User) => {
 
         try {
 
-            await resetWorkflowForUserAPI(user.email, user.password, user.workflowId);
+            await resetWorkflowForUserAPI(user.email, user.password, user.arena.project.workflowId);
         } finally {
         }
     };

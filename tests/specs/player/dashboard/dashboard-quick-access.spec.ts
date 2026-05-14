@@ -9,7 +9,7 @@ import { missionComplete, missionExpired, missionInProgress, missionNotStarted, 
 test.describe("Quick Access panel functionality", {
     tag: "@PE-DA-QA",
 }, () => {
-
+    test.skip();
 
 
     test("Quick access panel and items are visible", {

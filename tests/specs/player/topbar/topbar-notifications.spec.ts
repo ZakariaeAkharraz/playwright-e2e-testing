@@ -2,7 +2,7 @@ import test, { expect } from "@playwright/test";
 import { Dashboard } from "../../../pages/dashboard.page";
 import { resetWorkflow, startAndCompleteStepApi } from "../../../helpers/workflow.helper";
 import { QA_USER } from "../../../helpers/test-users";
-import { Arena } from "../../../helpers/test-project";
+import { arena } from "../../../helpers/test-project";
 
 
 
@@ -11,7 +11,7 @@ test.describe("notification functionality", () => {
 
 
     test.beforeEach(async ({ context }) => {
-        await resetWorkflow(Arena.project.workflowId, context);
+        await resetWorkflow(arena.project.workflowId, context);
     })
     test("notification workflow", {
         tag: "@AU-NO-01"
@@ -36,7 +36,7 @@ test.describe("notification functionality", () => {
             (await notificationButton.textContent())!.match(/\d+/)?.[0] ?? "0"
         );
 
-        await startAndCompleteStepApi(page.context(), Arena.project.workflowId, Arena.project.phase[0].steps.GAME.id);
+        await startAndCompleteStepApi(page.context(), arena.project.workflowId, arena.project.phase[0].steps.GAME.id);
         
         
         

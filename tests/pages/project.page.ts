@@ -1,5 +1,5 @@
 import { expect, Page } from "@playwright/test";
-import { Arena } from "../helpers/test-project";
+import { arena } from "../helpers/test-project";
 
 
 export class Project {
@@ -16,7 +16,7 @@ export class Project {
     // await arena.goto();
 
     // await this.page.locator("div[data-tutorial='project-cards']").nth(nthProject).click();
-    await this.page.goto(Arena.project.path);
+    await this.page.goto(arena.project.path);
 
 
   }
