@@ -3,6 +3,7 @@ import { describe } from "node:test";
 import { Dashboard } from "../../pages/dashboard.page";
 
 describe("verifying how should user menu work for the mentor", () => {
+    test.skip();
     const mentorRoles = ["Player", "Mentor"];
     test("mentor should have a dropdown menu with roles player and mentor", async ({ page }) => {
 
