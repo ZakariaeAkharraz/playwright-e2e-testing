@@ -7,7 +7,7 @@ import { getTestUsers } from "../../helpers/test-users";
 
 
 
-test("update password", async () => {
+test("update password for anonymous users", async () => {
     test.skip();
     const newUsers = [...getTestUsers("prod_data/PROD_TEST_USERS.json")];
     await Promise.allSettled(

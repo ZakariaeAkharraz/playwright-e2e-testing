@@ -18,8 +18,8 @@ export default defineConfig({
   // timeout: 100_000,
   testDir: './tests',
   testIgnore: process.env.CI
-  ? "**/loadtest/**"
-  : undefined, 
+    ? "**/loadtest/**"
+    : undefined,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -29,7 +29,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 2 : 2,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: process.env.CI ? [['html', { outputFile: 'results/results.xml' }]] : './tests/helpers/squash-reporter.ts',
+  reporter: process.env.CI ? [['html'], ['allure-playwright']] : './tests/helpers/squash-reporter.ts',
   // reporter: process.env.CI ? 'blob' : [['html'], ['allure-playwright'], ['list'],['./tests/helpers/squash-reporter.ts']],
   // reporter:'list',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -83,7 +83,7 @@ export default defineConfig({
     {
       name: "auth-user",
       testDir: "./tests/specs/authenticated user",
-      fullyParallel:false,
+      fullyParallel: false,
       use: {
         ...devices["Desktop Chrome"],
         baseURL: process.env.FRONTEND_GAMITOOL,
@@ -91,7 +91,7 @@ export default defineConfig({
 
       },
       dependencies: ['player'],
-      workers:2
+      workers: 2
     },
     {
       name: "player auth",
@@ -126,11 +126,4 @@ export default defineConfig({
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
   ],
-
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://localhost:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
 });
